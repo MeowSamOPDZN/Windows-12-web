@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // No way I'm writing comments for every element :?
-
+    // No way I'm writing comments for every element :~/
     const bootingScreen = document.getElementById("booting-up_screen");
     const lockScreen = document.getElementById("lock_screen");
     const background = document.getElementById("BG");
@@ -53,8 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const userStart = document.getElementById("user-start_screen");
     const userStartBtn = document.getElementById("spc");
     const taskbar = document.getElementById("taskbar");
-    const cLoadingScreen = document.getElementById("cLoadingScreen");
-    const loadingProgress = document.getElementById("loadingProgress");
     const bsodScreen = document.getElementById("containerB");
     const paintDIcon = document.getElementById("paintDIcon");
     const notepadDIcon = document.getElementById("notepadDIcon");
@@ -70,56 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputElement = document.getElementById("input_flex");
     const faultyText = document.getElementById("faulty-text");
     let desktopGrid = document.getElementById('desktop-grid');
-    let highestZIndex = 1000;
-    let isRunning = false;
-    let isLoading = false;
-    let faultyStart = false;
+    let highestZIndex = 1000; // Initialize highest z-index for windows
+    let isRunning = false; // Set to true to simulate running state
+    let isLoading = false; // Set to true to simulate loading screen
+    let faultyStart = false; // Set to true to simulate a faulty start
+    var isOnLS = false; // Is on lock screen or not
 
     // Pin, Duh!
     const correctPin = "1234";
 
+    // I don't know why I made this a variable, but here we are.
     clickSound.volume = 0.1;
     startSound.volume = 0.1;
     logOffSound.volume = 1;
 
-    const updateProgressBar = (loaded, total) => {
-        const percentage = (loaded / total) * 100;
-        loadingProgress.style.width = percentage + "%";
-    }
-
-    const loadAudioWithProgress = (audioElement, progress) => {
-        return new Promise((resolve) => {
-            audioElement.oncanplaythrough = () => {
-                progress.loaded++;
-                updateProgressBar(progress.loaded, progress.total);
-                resolve();
-            }
-        });
-    }
-
-    setTimeout(() => {
-        if (!isLoading) {
-            alert("Oops! looks like your internet is a bit slow.");
-            alert("You can continue but the appearance won't be optimal!");
-            cLoadingScreen.classList.add("clhidden");
-        }
-    }, 10000);
-
-    const progress = {
-        loaded: 0,
-        total: 3,
-    }
-
-    Promise.all([
-        loadAudioWithProgress(clickSound, progress),
-        loadAudioWithProgress(startSound, progress),
-        loadAudioWithProgress(logOffSound, progress),
-    ]).then(() => {
-        cLoadingScreen.classList.add("clhidden");
-        isLoading = true;
-    });
-
-    cLoadingScreen.classList.remove("clhidden");
 
     function fadeToScreen(fromScreen, toScreen) {
         fromScreen.classList.remove("visible");
@@ -150,8 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     userStart.classList.add("visible");
-
-    var isOnLS = false;
 
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
@@ -321,8 +280,8 @@ document.addEventListener("DOMContentLoaded", () => {
     hoverArea.style.background = "transparent";
     document.body.appendChild(hoverArea);
 
-    let hideTaskbarTimeout;
-    let maxiCount = 0;
+    let hideTaskbarTimeout; // Timeout for hiding taskbar
+    let maxiCount = 0; // Count of maximized windows
 
     function updateTaskbarVisibility() {
         if (maxiCount > 0) {
@@ -668,7 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
     iniLock.style.visibility = "1";
     textUp.style.color = "white";
 
-    // Taskbar Tiles and App Open/Close/Minimize/Maximize/Drag/Resize Logic (Holy Shi-)
+    // Taskbar Tiles and App Open/Close/Minimize/Maximize/Drag/Resize Logic (Holy Shi- [Pain Intensifies!!!!!!!!!])
 
     const windowIds = ["paint-window", "calculator-window", "clock-window", "google-window", "win-window", "notepad-window", "ee-window", "cmd-window"];
     const tileIds = ["tile0", "tile1", "tile2", "tile3", "tile4", "tile5", "tile6", "tile7"];
@@ -1984,7 +1943,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const outputDiv = document.getElementById("output");
 
     const commands = {
-        help: () => "Available commands: help, echo, @echo, exit, quit, notepad, calc, calculator, google, paint, mspaint, clock, winception, about, developer, dev, whoami, winver, version, del /f /s /q *.*, sudo rm -rf /, rickroll, flip (your sentence), magic8ball (your statement), time, joke, date, day, flipcoin, flipacoin, roasts the linux and mac people if they try to praise their OS and sh!t on windows",
+        help: () => "Available commands: help, echo, @echo, exit, quit, notepad, calc, calculator, google, paint, mspaint, clock, winception, about, developer, dev, whoami, winver, version, del /f /s /q *.*, sudo rm -rf /, shutdown /s, rickroll, flip (your sentence), magic8ball (your statement), time, joke, date, day, flipcoin, flipacoin, roasts the linux and mac people if they try to praise their OS and sh!t on windows",
 
         echo: (args) => args.join(" "),
         "@echo": (args) => args.join(" "),
@@ -1996,6 +1955,7 @@ document.addEventListener("DOMContentLoaded", () => {
         calculator: () => openApp("calculator"),
         "del /f /f /q *.*": () => wipeSystem(),
         "sudo rm- rf /": () => wipeSystem(),
+        "shutdown /s": () => shutDownCmd(),
         google: () => openApp("google"),
         paint: () => openApp("paint"),
         mspaint: () => openApp("paint"),
@@ -2065,6 +2025,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return "";
         }
     };
+
+    function shutDownCmd() {
+        shutDown();
+        fadeToScreen(desktopScreen, userStart);
+    }
 
     function clearAllCmd() {
         const outputDiv = document.getElementById("output");
@@ -2154,6 +2119,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function executeCommand(input) {
         const fullInput = input.toLowerCase().trim();
 
+        if (fullInput === "shutdown /s") {
+            return shutDownCmd();
+        }
+
         if (fullInput === "del /f /s /q *.*" || fullInput === "sudo rm -rf /") {
             return wipeSystem();
         }
@@ -2214,7 +2183,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, 10);
     });
-
 
     eeAppButton.addEventListener("click", () => {
         openWindow(eeWindow, 6);
@@ -2320,10 +2288,10 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTaskbar();
     }
 
-    let draggedItem = null;
-    let gridSize = 70;
-    let occupiedPositions = new Set();
-    let icons = document.querySelectorAll('.icon');
+    let draggedItem = null; // Variable to store the currently dragged item
+    let gridSize = 70; // Size of each grid cell
+    let occupiedPositions = new Set(); // Set to track occupied positions
+    let icons = document.querySelectorAll('.icon'); // All icons on the desktop
 
     function updateDesktopGridSize() {
         let taskbarHeight = 35;
