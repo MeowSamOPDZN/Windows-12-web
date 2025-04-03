@@ -1783,8 +1783,8 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleEraser.addEventListener("click", () => {
         erasing = !erasing;
         toggleEraser.style.backgroundImage = erasing
-            ? "url('https://www.dropbox.com/scl/fi/l47httze2bit7dwivxdol/BackgroundEraser_20240930_215638659.png?rlkey=08h9ovy8e873ogjycqjmr7jqt&st=78s60ttd&raw=1')"
-            : "url('https://www.dropbox.com/scl/fi/6ic098wjn7bgsvmeturtk/BackgroundEraser_20240929_235114608.png?rlkey=yhw8dund5ea17zjhax9o88ll6&st=9uumduhh&raw=1')";
+            ? "url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Paint/Pen(paint).webp?raw=true')"
+            : "url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Paint/Eraser(paint).webp?raw=true')";
         clickSound.volume = 0.1;
         clickSound.play();
         updatePointer();

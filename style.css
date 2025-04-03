@@ -14,7 +14,7 @@ body {
 .startPc {
     width: 85px;
     height: 95px;
-    background-image: url('https://www.dropbox.com/scl/fi/4pujg0mggyebbg133f2qn/BackgroundEraser_20240920_230329476.png?rlkey=m2fps0sx48497xfxjqx10csqd&st=9rvjmcvw&raw=1');
+    background-image: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Taskbar/Shutdown.webp?raw=true');
     background-size: 115px 115px;
     background-color: rgba(70, 70, 70, 0.6);
     border: none;
@@ -107,7 +107,7 @@ body {
     margin-bottom: 10px;
     width: 100px;
     height: 100px;
-    background: url('https://www.dropbox.com/scl/fi/sze25uorxinqpxn0wgukm/images.png?rlkey=yrd1dc7lev56jczsxdua26ywo&st=glam24k1&raw=1');
+    background: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Default%20Profile%20Photo.webp?raw=true');
     background-size: cover;
     background-position: center;
     border-radius: 50px;
@@ -341,7 +341,7 @@ input.pass:hover {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url('https://www.dropbox.com/s/7r4177syp8vx1jr/_purple_wallpaper_for_windows_11_dark_mode_by_windows7ultimatefan_dho0m2w.jpg?st=eyw3k35t&raw=1');
+    background-image: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Wallpaper.jpg?raw=true');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -358,7 +358,7 @@ input.pass:hover {
 }
 
 #Desktop {
-    background-image: url('https://www.dropbox.com/s/7r4177syp8vx1jr/_purple_wallpaper_for_windows_11_dark_mode_by_windows7ultimatefan_dho0m2w.jpg?st=eyw3k35t&raw=1');
+    background-image: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Wallpaper.jpg?raw=true');
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -938,7 +938,7 @@ input.pass:hover {
     position: fixed;
     bottom: 15px;
     right: 15px;
-    background-image: url('https://www.dropbox.com/scl/fi/4pujg0mggyebbg133f2qn/BackgroundEraser_20240920_230329476.png?rlkey=m2fps0sx48497xfxjqx10csqd&st=9rvjmcvw&raw=1');
+    background-image: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Taskbar/Shutdown.webp?raw=true');
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     background-size: 30px 30px;
     background-color: rgba(70, 70, 70, 0.6);
@@ -1537,7 +1537,7 @@ canvas {
     right: -163.5px;
     width: 25px;
     height: 25px;
-    background-image: url('https://www.dropbox.com/scl/fi/6ic098wjn7bgsvmeturtk/BackgroundEraser_20240929_235114608.png?rlkey=yhw8dund5ea17zjhax9o88ll6&st=9uumduhh&raw=1');
+    background-image: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Paint/Eraser(paint).webp?raw=true');
     background-size: 25px 25px;
     background-position: center;
     border: none;
@@ -1551,7 +1551,7 @@ canvas {
     border-radius: 7px;
     width: 25px;
     height: 25px;
-    background-image: url('https://www.dropbox.com/scl/fi/n0h5yoj23vvllmnzwpgvn/BackgroundEraser_20240930_225015670.png?rlkey=xa23jbya6mg6jm7223b73k7n1&st=y5q3eflx&raw=1');
+    background-image: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Paint/Clear%20All%20(paint).webp?raw=true');
     background-size: 25px 25px;
     background-position: center;
     border: none;
@@ -1911,7 +1911,7 @@ canvas {
     width: 100px;
     height: 100px;
     justify-content: center;
-    background: url('https://www.dropbox.com/s/r332e1vojm8ngym/IMG_B_06032025.jpg?st=7gnvikxc&raw=1');
+    background: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Dev%20Photo.jpg?raw=true');
     background-size: cover;
     background-position: center;
     border-radius: 50px;
@@ -2276,7 +2276,7 @@ canvas {
 #output {
     max-height: 100%;
     overflow-y: auto;
-    white-space: pre-wrap;
+    white-space: pre-line;
     text-align: left;
     font-family: monospace;
     color: white;
@@ -2463,7 +2463,6 @@ canvas {
     width: 20px;
     height: 20px;
     background: transparent;
-    cursor: pointer;
     opacity: 0;
 }
 
@@ -2480,7 +2479,7 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://www.dropbox.com/scl/fi/ay3dkl2c9w0qnxxwqt0cy/black.png?rlkey=a86qybixghwf7a61fxw8uquht&st=5evv2vqb&raw=1') center/cover no-repeat;
+    background: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Black%20Overlay.webp?raw=true') center/cover no-repeat;
     opacity: 0;
     pointer-events: none;
     z-index: 99999;
