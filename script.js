@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const winToast = document.getElementById("win-toast");
     const winClock = document.getElementById("win-clock");
     const startMenu = document.getElementById("start-menu");
+    const quickSettings = document.getElementById("quick-settings");
     const loadingScreen = document.getElementById("loading_screen");
     const statusText = document.getElementById("load_status");
     const clockWindow = document.getElementById("clock-window");
@@ -339,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     taskbar.addEventListener("mouseleave", () => {
         if (maxiCount > 0) {
-            if (startMenu.classList.contains("hidden")) {
+            if (startMenu.classList.contains("hidden") && quickSettings.classList.contains("hidden")) {
                 hideTaskbarTimeout = setTimeout(() => {
                     taskbar.classList.remove("show");
                 }, 900);
@@ -375,23 +376,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.attributeName === "class") {
-                if (startMenu.classList.contains("hidden") && maxiCount > 0) {
+                const startHidden = startMenu.classList.contains("hidden");
+                const quickPanelHidden = quickSettings.classList.contains("hidden");
+
+                if (startHidden && quickPanelHidden && maxiCount > 0) {
                     hideTaskbarTimeout = setTimeout(() => {
                         taskbar.classList.remove("show");
                     }, 85);
+                } else {
+                    clearTimeout(hideTaskbarTimeout);
+                    taskbar.classList.add("show");
                 }
 
-                if (startMenu.classList.contains("hidden")) {
+                if (startHidden) {
                     winLogoShadow.classList.remove("open");
-                }
-                else if (startMenu.classList.contains("show")) {
+                } else {
                     winLogoShadow.classList.add("open");
                 }
             }
         });
     });
 
-    observer.observe(startMenu, { attributes: true });
+    observer.observe(startMenu, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(quickSettings, { attributes: true, attributeFilter: ["class"] });
 
     lockButton.addEventListener("click", () => {
         shutDown();
@@ -433,6 +440,8 @@ document.addEventListener("DOMContentLoaded", () => {
         handleSwipeDown();
         startMenu.classList.remove("show");
         setTimeout(() => startMenu.classList.add("hidden"), 300);
+        quickSettings.classList.remove("show");
+        setTimeout(() => quickSettings.classList.add("hidden"), 300);
         display.value === "0";
     }
 
@@ -554,10 +563,6 @@ document.addEventListener("DOMContentLoaded", () => {
         menu.classList.remove('show');
     });
 
-    window.addEventListener("focus", () => {
-        document.body.style.cursor = "default";
-    });
-
     function genericFn() {
         //Just a lil generic fucntion :D
         clickSound.volume = 0.1
@@ -611,6 +616,46 @@ document.addEventListener("DOMContentLoaded", () => {
             startMenu.classList.remove("show")
             setTimeout(() => startMenu.classList.add("hidden"), 300);
         }
+    });
+
+    winToast.addEventListener("click", function () {
+        clickSound.volume = 0.1;
+        clickSound.play();
+
+        if (quickSettings.classList.contains("hidden")) {
+            quickSettings.classList.remove("hidden");
+            setTimeout(() => quickSettings.classList.add("show"), 100);
+        }
+        else {
+            quickSettings.classList.remove("show")
+            setTimeout(() => quickSettings.classList.add("hidden"), 300);
+        }
+    });
+
+    document.querySelectorAll(".sliderr").forEach(slide => {
+        function updateSliderM() {
+            let percent = 100 - (this.value / this.max) * 100;
+            this.style.setProperty("--fill-height", percent + "%");
+            this.style.setProperty("background",
+                `linear-gradient(to top,  rgb(66, 58, 73) ${percent}%, rgb(0, 147, 255) ${percent}%)`);
+            let opacityValue = 0.8 - (this.value / 100) * 0.8;
+            if (this.id === "brightness-slider") {
+                document.querySelector(".overlay").style.opacity = opacityValue;
+            }
+        }
+
+        slide.addEventListener("input", updateSliderM);
+        updateSliderM.call(slide);
+    });
+
+    const togglesM = document.querySelectorAll(".toggle-button");
+
+    togglesM.forEach(toggleM => {
+        toggleM.addEventListener("click", () => {
+            toggleM.classList.toggle("active");
+            clickSound.volume = 0.2;
+            clickSound.play();
+        });
     });
 
     //some random default values :|
@@ -723,10 +768,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let img = tile.querySelector("img");
         if (!img) return;
 
-        img.style.transform = "translateY(-9px) scaleX(0.8) scaleY(1.15)";
+        img.style.transform = "translateY(-9px) scale(0.8, 1.15)";
 
         setTimeout(() => {
-            img.style.transform = "translateY(0) scaleX(1) scaleY(1)";
+            img.style.transform = "translateY(0) scale(1, 1)";
         }, delay);
     }
 
@@ -734,10 +779,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let img = tile.querySelector("img");
         if (!img) return;
 
-        img.style.transform = "translateY(9px) scaleX(1.15) scaleY(0.8)";
+        img.style.transform = "translateY(9px) scale(1.15, 0.8)";
 
         setTimeout(() => {
-            img.style.transform = "translateY(0) scaleX(1) scaleY(1)";
+            img.style.transform = "translateY(0) scale(1, 1)";
         }, delay);
     }
 
@@ -1288,11 +1333,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const isClickInsideMenu = startMenu.contains(event.target);
         const isClickToggleButton = winLogo.contains(event.target);
 
+        const isClickInsideQuick = quickSettings.contains(event.target);
+        const isClickWinToastButton = winToast.contains(event.target);
+
         if (!isClickInsideMenu && !isClickToggleButton) {
             startMenu.classList.remove("show");
             setTimeout(() => startMenu.classList.add("hidden"), 300);
         }
-    })
+
+        if (!isClickInsideQuick && !isClickWinToastButton) {
+            quickSettings.classList.remove("show");
+            setTimeout(() => quickSettings.classList.add("hidden"), 300);
+        }
+    });
 
     let screensaverTimeout;
 
@@ -2219,6 +2272,8 @@ document.addEventListener("DOMContentLoaded", () => {
         handleSwipeDown();
         startMenu.classList.remove("show");
         setTimeout(() => startMenu.classList.add("hidden"), 300);
+        quickSettings.classList.remove("show");
+        setTimeout(() => quickSettings.classList.add("hidden"), 300);
         display.value === "0";
         removeTilesSequentially();
 
@@ -2261,7 +2316,7 @@ document.addEventListener("DOMContentLoaded", () => {
             await new Promise(resolve => setTimeout(resolve, 200));
         }
 
-        await new Promise(resolve => setTimeout(resolve, 300)); // Extra delay
+        await new Promise(resolve => setTimeout(resolve, 300));
         updateTaskbar();
     }
 
