@@ -1,0 +1,487 @@
+<!-- Hand Crafted With Love By Shourya :D -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Windows 12 Concept</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="cLoadingScreen" class="c-loading-screen"  style="z-index: 10000000;">
+            <div class="loading-text" style="user-select: none;">Loading</div>
+            <div class="progress-bar" style="user-select: none;">
+            <div id="loadingProgress" class="progress" style="user-select: none;"></div>
+            </div>
+    </div>
+
+    <div id="monitor" class="monitor-container" style="user-select: none; -moz-user-select: none; -ms-user-select: none;">
+    
+<div class="conparent not"  id="containerB">
+<div class="container">
+        <div id="sad-face">:(</div>
+        <div id="message">
+            Your device ran into a problem and needs to restart.
+            We're just collecting some error info, and then we'll shut it down for you.
+        </div>
+        <div id="percentage">0% complete</div>
+        <div class="qr-error">
+            <div id="qr-code">
+                <img src="https://www.dropbox.com/scl/fi/dtx9bze8xp31n3i07et2w/BSOD.png?rlkey=l3jtcj9e6dlgab1o1ijgw4svk&st=zx5rmsyq&raw=1" alt="QR Code">
+            </div>
+            <div class="error-info">
+                <div class="error-help">For more info about this issue and possible fixes, visit <br> http://windows.com/stopcode </div>
+                <div id="error-code">Stop Code: 0x6EJ69B1E</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loading_screen" class="screen hid">
+    <p class="load_status_text" id="load_status" style="user-select: none; font-size: 2.2rem; font-weight:bold;">Starting Up</p>
+    <span class="loading" style="user-select: none;">
+        <span class="edge edge-left"></span>
+<span class="edge edge-right"></span>
+    </span>
+</div>
+    
+<div id="booting-up_screen" class="screen hid">
+    <div class="windows-logo_ini" style="user-select: none;">
+        <div class="logo-part_ini part11"></div>
+        <div class="logo-part_ini part12"></div>
+        <div class="logo-part_ini part13"></div>
+        <div class="logo-part_ini part14"></div>
+    </div>
+     <span class="loading">
+        <span class="edge edge-left"></span>
+<span class="edge edge-right"></span>
+    </span>
+    <div id="faulty-text">Preparing Automatic Repair</div>
+
+    <footer id="footer-text">
+        <p class="made" style="font-size:0.5rem; user-select: none;">Made by Shourya</p>
+    </footer>
+</div>
+
+<div id="user-start_screen" class="screen">
+    <div id="spc" style="user-select: none;  z-index: 9999999;" class="startPc"></div>
+    <p style="font-size: 1rem; position:absolute; bottom: 30px; color: white; text-align: center;"> This project looks best in <b>fullscreen</b>, so please press the <b>F11</b> key to make this window <b>fullscreen</b>.</p>
+</div>
+
+        <div id="lock_screen" class="screen hid">
+           <img id="BG" draggable="false" style="user-select: none;" />
+            <div class ="lockflex">
+               <div id="time" class="timeText" style="user-select: none;"><span id="current_time"></span>
+                  <div id="date" class="dateText" style="user-select: none;"><span id="current_date"></span>
+                  </div>
+               </div> 
+               <div id="sweep" class="tex" style="display:none;">Swipe Up To Unlock</div>
+            </div>
+            <div id="enter_pass" class="passflex">
+            <img id="User_Icon" draggable="false" style="user-select: none;" />
+            <div id="User_Name" class="username" style="user-select: none;">Administrator</div>
+            <div id="input_flex" class ="inputflex">
+                <input type="password" style="user-select: none;" inputmode="numeric" pattern="[0-9]*" maxlength="4" required id="password" class="pass" placeholder="Enter Pin"/>
+                <button id="unlock_button" class="unlock" style="user-select: none;">▶</button>
+            </div>
+            <div id="wrong_pass" style="user-select: none;">
+               <span id="pass_fallback" style="font-size: 0.95rem">Provide a pin.</span>
+               <button id="wpass_close_btn">OK</button>
+            </div>
+            <div class="passhint" style="user-select: none;">Password Hint: First Four Natural Numbers</div> 
+            <button id="shutbut2" style="user-select: none;" class="shutdown-button"></button>
+            </div>
+            
+        </div>
+
+        <div id="Desktop" class="screen hid">
+		
+		<div id="context-menu" class="context-menu">
+                    <ul>
+                        <li class="context-menu-item" onclick="genericFn()"><img src="https://www.dropbox.com/scl/fi/xw9bfcpi9bx178fenp36c/View.png?rlkey=zgyx7r8ew49r6l9fooaedr3wz&st=j6pkc0o8&raw=1" alt="View"><span>View</span><span class="submenu-arrow"><img src="https://www.dropbox.com/scl/fi/tenkpzo2lwg4bxoyoob5a/Triangle-Right.png?rlkey=iel17btkm27rzp5fpgoiy5z18&st=ffkyzzmn&raw=1" alt="tri"></span></li>
+    			<li class="context-menu-item" onclick="genericFn()"><img src="https://www.dropbox.com/scl/fi/llabzkhqjpuvtg49vyq38/Sort-By.png?rlkey=hlh7katqmod7gfgt5z7zkxhpz&st=v1ppxwjq&raw=1" alt="Sort by"><span>Sort by</span><span class="submenu-arrow"><img src="https://www.dropbox.com/scl/fi/tenkpzo2lwg4bxoyoob5a/Triangle-Right.png?rlkey=iel17btkm27rzp5fpgoiy5z18&st=ffkyzzmn&raw=1" alt="tri"></span></li>
+                        <div class="dividr"></div>
+    			<li class="context-menu-item" onclick="genericFn()"><img src="https://www.dropbox.com/scl/fi/sdng3pxovct420rdjzegn/Refresh.png?rlkey=7mmub7zeqaamv4bv93siazbbw&st=nu44d6r6&raw=1" alt="Refresh"><span>Refresh</span></li>
+    			<li class="context-menu-item" onclick="genericFn()"><img src="https://www.dropbox.com/scl/fi/2qcvcdmko0umysf6a27d2/New.png?rlkey=tc3pzwrs90ls3omx1yhy9dyls&st=uivixdql&raw=1" alt="New"><span>New</span><span class="submenu-arrow"><img src="https://www.dropbox.com/scl/fi/tenkpzo2lwg4bxoyoob5a/Triangle-Right.png?rlkey=iel17btkm27rzp5fpgoiy5z18&st=ffkyzzmn&raw=1" alt="tri"></span></li>
+                        <div class="dividr"></div>
+    			<li class="context-menu-item" onclick="genericFn()"><img src="https://www.dropbox.com/scl/fi/vx4pjbkq7xi06y98yp5hl/Display-Settings.png?rlkey=6uf3xj8reyitu291im91armh6&st=h4boexo1&raw=1" alt="Display settings"><span>Display settings</span></li>
+    			<li class="context-menu-item" onclick="genericFn()"><img src="https://www.dropbox.com/scl/fi/cdbkqvklq24237z6y1v7z/Personalize.png?rlkey=y4cqnnpiodbkk2mlpoyvmirr3&st=harqoemx&raw=1" alt="Personalize"><span>Personalize</span></li>
+  		    </ul>
+	        </div>
+
+            <div id="controls">
+            </div>
+            
+        <div class="start-menu hidden" id="start-menu">
+    <div class="app-buttons">
+        <div id="clock-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/hk71lpswfd70y1hcstx4m/download-1.png?rlkey=y252g61hb2yh2eatpggivarwi&st=4y3mjocz&raw=1" alt="Clock">
+            <span>Clock</span>
+        </div>
+        <div id="calculator-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/yi11yuoeu1gw5rjioe56e/BackgroundEraser_20240920_230406065.png?rlkey=0jmnc0akv4jtupdgjsb68124c&st=gk64zevp&raw=1" alt="Calculator">
+            <span>Calculator</span>
+    </div>
+    <div id="paint-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/mgop99w9qhmxpsfzu7w53/download.png?rlkey=zxzejagpv0lu56dk7qxgyjzue&st=2nn329r0&raw=1" alt="Paint">
+            <span>Paint</span>
+    </div>
+       <div id="google-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/pk17dk625bxhr372wk4p0/7611770.png?rlkey=het5uy6o58xf29i22mz56um6e&st=ziz2hwrm&raw=1" alt="Google">
+            <span>Google</span>
+    </div>
+       <div id="win-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/46h6xp4gomecz2868nlrd/Winception.png?rlkey=1ndnr151unv9p57czdsf6u3m1&st=a23wlvr2&raw=1" alt="Windows">
+            <span>Winception</span>
+    </div>
+       <div id="notepad-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/vhlrh20997sxoedlpxmv4/NotepadAppList.scale-200.png?rlkey=22dyn0l69e671qii5i7dwabie&st=su5orzik&raw=1" alt="Notepad">
+            <span>Notepad</span>
+    </div>
+       <div id="cmd-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/xpcbl01omap0gstxubh8i/CMD.png?rlkey=uf1lwbjzn9u5prq1d0vqn1v5y&st=wajujwjk&raw=1" alt="cmd">
+            <span>CMD</span>
+    </div>
+       <div id="ee-app-btn" draggable="false" class="app-button">
+            <img src="https://www.dropbox.com/scl/fi/ckos2rjx2mnaiwry6ntvl/more-327.png?rlkey=i36jbs239l1pu8v78fgpm5iks&st=op6w3y8m&raw=1" alt="More">
+            <span>More</span>
+    </div>
+</div>    
+
+    <div class="bottom-right-chip" id="usebut">
+        <img draggable="false" src="https://www.dropbox.com/scl/fi/sze25uorxinqpxn0wgukm/images.png?rlkey=yrd1dc7lev56jczsxdua26ywo&st=glam24k1&raw=1" alt="Chip Icon" class="chip-icon">
+        <span class="chip-text">Administrator</span>
+    </div>
+
+    <button id="shutbut" class="shutdown-button"></button>
+</div>
+        
+<div id="clock-window" class="app-window hidden no-resize">
+    <div class="window-header">
+            <img src="https://www.dropbox.com/scl/fi/hk71lpswfd70y1hcstx4m/download-1.png?rlkey=y252g61hb2yh2eatpggivarwi&st=4y3mjocz&raw=1" alt="Clock">
+        <span class="clo">Clock</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn" style="display: none;">▢</button>
+            <button class="restore-btn" style="display: none;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+    
+    <div class="clock-window-content">
+                <div class="watch-container">
+                    <canvas id="clock"></canvas>
+                </div> 
+                <div class="clockAppFlex">
+                    <div class="AtimeText"><span id="clock_time"></span>
+                  <div class="AdateText"><span id="clock_date"></span>
+                  </div>
+                </div>
+               </div> 
+    </div>
+</div>
+
+<div id="google-window" class="app-window hidden">
+    <div class="window-header">
+            <img src="https://www.dropbox.com/scl/fi/pk17dk625bxhr372wk4p0/7611770.png?rlkey=het5uy6o58xf29i22mz56um6e&st=ziz2hwrm&raw=1" alt="Google" style="width: 13px; height: 13px;">
+        <span class="clo">Google</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+ 
+    <div class="iframe-window-content">
+        <iframe id="googleIframe" src="null" width="100%" height="100%" style="border:none;" tabindex="-1"></iframe>
+</div>
+</div>
+
+<div id="win-window" class="app-window hidden">
+    <div class="window-header">
+<img src="https://www.dropbox.com/scl/fi/46h6xp4gomecz2868nlrd/Winception.png?rlkey=1ndnr151unv9p57czdsf6u3m1&st=a23wlvr2&raw=1" alt="Windows" style="width: 13px; height: 13px; top: 0;">
+        <span class="clo">Winception</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+ 
+    <div class="iframe-window-content">
+        <iframe id="winIframe" src="null" width="100%" height="100%" style="border:none;" tabindex="-1"></iframe>
+</div>
+</div>
+
+<div id="calculator-window" class="app-window hidden no-resize">
+    <div class="window-header">
+<img src="https://www.dropbox.com/scl/fi/yi11yuoeu1gw5rjioe56e/BackgroundEraser_20240920_230406065.png?rlkey=0jmnc0akv4jtupdgjsb68124c&st=gk64zevp&raw=1" alt="Calculator">
+        <span class="clo" >Calculator</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn" style="display: none;">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+    <div class="window-content">
+    <div class="calculator-container" style="z-index: 0;">
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <div class="cbuttons">
+                <button onclick="clearDisplay()" class="AC">AC</button>
+                <button onclick="deleteLast()" class="Del">⌫</button>
+                <button onclick="appendOperator('/')" class="Div">÷</button>
+                <button onclick="appendOperator('*')" class="Multi">×</button>
+                <button onclick="appendNumber(7)"class="butto">7</button>
+                <button onclick="appendNumber(8)"class="butto">8</button>
+                <button onclick="appendNumber(9)"class="butto">9</button>
+                <button onclick="appendOperator('-')" class="Sub">-</button>
+                <button onclick="appendNumber(4)"class="butto">4</button>
+                <button onclick="appendNumber(5)"class="butto">5</button>
+                <button onclick="appendNumber(6)"class="butto">6</button>
+                <button onclick="appendOperator('+')" class="Add">+</button>
+                <button onclick="appendNumber(1)"class="butto">1</button>
+                <button onclick="appendNumber(2)"class="butto">2</button>
+                <button onclick="appendNumber(3)"class="butto">3</button>
+                <button onclick="appendNumber(0)" class="zero">0</button>
+                <button onclick="appendDot()"class="butto">.</button>
+                <button onclick="calculate()" class="equal">=</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="paint-window" class="app-window hidden">
+    <div class="window-header">
+            <img src="https://www.dropbox.com/scl/fi/mgop99w9qhmxpsfzu7w53/download.png?rlkey=zxzejagpv0lu56dk7qxgyjzue&st=2nn329r0&raw=1" alt="Paint">
+        <span class="clo">Paint</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+    <div class="paint-window-content">
+    <div class="window" id="mWindow">
+    <div class="toolbar">
+    <div class="color-section">
+        <input type="color" id="colorPicker" class="penColor" value="#000000">
+        <input type="color" id="eraserColorPicker" class="eraserColor" value="#333333">
+        <p class="t1">Colors</p>
+    </div>
+    <div class="divider1"></div> 
+    <div class="size-section">
+        <input type="range" id="brushSize" class="penSize" min="1" max="30" value="8">
+        <input type="range" id="eraserSize" class="eraserSize" min="1" max="50" value="15">
+        <p class="t2">Sizes</p>
+    </div>
+    <div class="divider2"></div> 
+    <div class="button-section">
+        <button id="toggleEraser" class="togglePen"></button>
+        <button id="clearButton" class="clearAll"></button>
+        <p class="t3">Tools</p>
+    </div>
+</div>
+    <canvas id="paintCanvas" class="canva"></canvas>
+      <div id="customPointer"></div>
+      </div>
+    </div>
+    </div>
+
+<div id="ee-window" class="app-window hidden no-resize">
+<div class="for-glow">
+    <div class="window-header">
+         <img src="https://www.dropbox.com/scl/fi/ckos2rjx2mnaiwry6ntvl/more-327.png?rlkey=i36jbs239l1pu8v78fgpm5iks&st=op6w3y8m&raw=1" alt="More">
+        <span class="eeClo">The Dev Himself !?</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn" style="display: none;">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+    
+    <div class="ee-window-content">
+    <div class ="eeflex" id="eeHeart">
+        <img class="eeDev" id="eeDev"></img>
+            <div class="eeDevName">I am the dev, btw name's <b>SHOURYA</b> and my pronous are <b>HE/HIS</b>. I hope you have a good day or would you?! [Vsauce Theme Starts Playing]</div>
+    </div>
+    </div>
+</div>
+</div>
+
+<div id="notepad-window" class="app-window hidden">
+    <div class="window-header" style="border: none; background: rgba(30, 30, 30, 0.5);">
+            <img src="https://www.dropbox.com/scl/fi/vhlrh20997sxoedlpxmv4/NotepadAppList.scale-200.png?rlkey=22dyn0l69e671qii5i7dwabie&st=su5orzik&raw=1" alt="Notepad">
+        <span class="clo">Notepad</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+    <div class="window-content">
+           <div class="menu-bar">
+        <div class="menu" id="file-menu">File
+            <div class="dropdown">
+                <div onclick="focusEditor(); openFile()"><img src="https://www.dropbox.com/scl/fi/x4b73b4bbo85i6z9km4cm/Open.png?rlkey=xguwhlb2y2tuumzwkndcn91te&st=zc03iod6&raw=1" alt="Open">Open</div>
+                <div onclick="focusEditor(); saveFile()"><img src="https://www.dropbox.com/scl/fi/6b3pxc7fnu9zjzua4tuu3/Save.png?rlkey=toeac30zkemg9whualeyl0238&st=qk10a2ai&raw=1" alt="Save">Save</div>
+            </div>
+        </div>
+        <div class="menu" id="edit-menu">Edit
+            <div class="dropdown">
+                <div onclick="focusEditor(); cutText()"><img src="https://www.dropbox.com/scl/fi/i8tsxug7ifdjn9v2v3g27/Cut.png?rlkey=o3gf9ekc7ui2ais2iiiptsva0&st=usocd7bq&raw=1" alt="Cut">Cut</div>
+                <div onclick="focusEditor(); copyText()"><img src="https://www.dropbox.com/scl/fi/ftszo5d4o5fg58s8rlrec/Copy.png?rlkey=tskvcm0pgi7zdr1g02zdzu52x&st=9m9n69bw&raw=1" alt="Copy">Copy</div>
+                <div onclick="focusEditor(); pasteText()"><img src="https://www.dropbox.com/scl/fi/1wsbu9a3e0triialao4yg/Paste.png?rlkey=bq418tr2qb4l1c5dvpbtchz6p&st=prwaahq7&raw=1" alt="Paste">Paste</div>
+                <div onclick="focusEditor(); selectAll()"><img src="https://www.dropbox.com/scl/fi/wq6v6r5tdidxyr0j0i2rz/Select-All.png?rlkey=u4qo2r5q4sexvl0b0muvvy26d&st=rs591bdn&raw=1" alt="Select All">Select All</div>
+            </div>
+        </div>
+    </div>
+    <textarea id="editor" oninput="updateStats()" onkeyup="updateStats()" onmouseup="updateStats()"></textarea>
+    <div id="footer">Ln: 1, Col: 1 | Characters: 0</div>
+    </div>
+</div>
+
+<div id="cmd-window" class="app-window hidden">
+    <div class="window-header" style="background-color: rgba(0, 0, 0, 0.4); border: none;">
+            <img src="https://www.dropbox.com/scl/fi/xpcbl01omap0gstxubh8i/CMD.png?rlkey=uf1lwbjzn9u5prq1d0vqn1v5y&st=wajujwjk&raw=1" alt="cmd">
+        <span class="clo">Command Prompt</span>
+        <div class="window-controls">
+            <button class="minimize-btn">-</button>
+            <button class="maximize-btn">▢</button>
+            <button class="restore-btn" style="display: none;">  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M9 7V5a2 2 0 0 1 2-2h10v10a2 2 0 0 1-2 2h-2"></path>
+  </svg>
+</button>
+            <button class="close-btn">×</button>
+        </div>
+    </div>
+    <div class="window-content" style="background: rgba(0, 0, 0, 0.4); padding-left: 5px;">
+         <div id="output">Macrohard Windows [Version 12.0.50023]
+(c) Macrohard Corporation. Some rights reserved.
+
+</div>
+    </div>
+</div>
+
+    <div class="desktop-grid" id="desktop-grid">
+        <div class="icon" draggable="true" id="paintDIcon"><img src="https://www.dropbox.com/scl/fi/mgop99w9qhmxpsfzu7w53/download.png?rlkey=zxzejagpv0lu56dk7qxgyjzue&st=2nn329r0&raw=1" alt="Paint">Paint</div>
+        <div class="icon" draggable="true" id="CalculatorDIcon"><img src="https://www.dropbox.com/scl/fi/yi11yuoeu1gw5rjioe56e/BackgroundEraser_20240920_230406065.png?rlkey=0jmnc0akv4jtupdgjsb68124c&st=gk64zevp&raw=1" alt="Calculator">Calculator</div>
+        <div class="icon" draggable="true" id="ClockDIcon"><img src="https://www.dropbox.com/scl/fi/hk71lpswfd70y1hcstx4m/download-1.png?rlkey=y252g61hb2yh2eatpggivarwi&st=4y3mjocz&raw=1" alt="Clock">Clock</div>
+        <div class="icon" draggable="true" id="GoogleDIcon"><img src="https://www.dropbox.com/scl/fi/pk17dk625bxhr372wk4p0/7611770.png?rlkey=het5uy6o58xf29i22mz56um6e&st=ziz2hwrm&raw=1" alt="Google">Google</div>
+        <div class="icon" draggable="true" id="WindowsDIcon"><img src="https://www.dropbox.com/scl/fi/46h6xp4gomecz2868nlrd/Winception.png?rlkey=1ndnr151unv9p57czdsf6u3m1&st=a23wlvr2&raw=1" alt="Windows">Winception</div>
+<div class="icon" draggable="true" id="noteDIcon"><img src="https://www.dropbox.com/scl/fi/vhlrh20997sxoedlpxmv4/NotepadAppList.scale-200.png?rlkey=22dyn0l69e671qii5i7dwabie&st=su5orzik&raw=1" alt="Notepad">Notepad</div>
+<div class="icon" draggable="true" id="cmdDIcon"><img src="https://www.dropbox.com/scl/fi/xpcbl01omap0gstxubh8i/CMD.png?rlkey=uf1lwbjzn9u5prq1d0vqn1v5y&st=wajujwjk&raw=1" alt="cmd">CMD</div>
+        <div class="icon" draggable="true" id="moreDIcon"><img src="https://www.dropbox.com/scl/fi/ckos2rjx2mnaiwry6ntvl/more-327.png?rlkey=i36jbs239l1pu8v78fgpm5iks&st=op6w3y8m&raw=1" alt="More">More</div>
+    </div>
+
+            <div id="taskbar" class="taskbar">
+                <button id="win-logo" class="taskbar-logo">
+                    <div id="win-logo-shadow" class="windows-logo">
+                        <div class="logo-part part1"></div>
+                        <div class="logo-part part2"></div>
+                        <div class="logo-part part3"></div>
+                        <div class="logo-part part4"></div>
+                    </div>
+                </button>
+
+                    <div class="taskbar-flex">
+        <div class="tile hidden hide" id="tile0"><img src="https://www.dropbox.com/scl/fi/mgop99w9qhmxpsfzu7w53/download.png?rlkey=zxzejagpv0lu56dk7qxgyjzue&st=2nn329r0&raw=1" alt="Paint"></div>
+        <div class="tile hidden hide" id="tile1"><img src="https://www.dropbox.com/scl/fi/yi11yuoeu1gw5rjioe56e/BackgroundEraser_20240920_230406065.png?rlkey=0jmnc0akv4jtupdgjsb68124c&st=gk64zevp&raw=1" alt="Calculator"></div>
+        <div class="tile hidden hide" id="tile2"><img src="https://www.dropbox.com/scl/fi/hk71lpswfd70y1hcstx4m/download-1.png?rlkey=y252g61hb2yh2eatpggivarwi&st=4y3mjocz&raw=1" alt="Clock"></div>
+        <div class="tile hidden hide" id="tile3"><img src="https://www.dropbox.com/scl/fi/pk17dk625bxhr372wk4p0/7611770.png?rlkey=het5uy6o58xf29i22mz56um6e&st=ziz2hwrm&raw=1" alt="Google"></div>
+        <div class="tile hidden hide" id="tile4"><img src="https://www.dropbox.com/scl/fi/46h6xp4gomecz2868nlrd/Winception.png?rlkey=1ndnr151unv9p57czdsf6u3m1&st=a23wlvr2&raw=1" alt="Windows"></div>
+        <div class="tile hidden hide" id="tile6"><img src="https://www.dropbox.com/scl/fi/ckos2rjx2mnaiwry6ntvl/more-327.png?rlkey=i36jbs239l1pu8v78fgpm5iks&st=op6w3y8m&raw=1" alt="More"></div>
+        <div class="tile hidden hide" id="tile5"><img src="https://www.dropbox.com/scl/fi/vhlrh20997sxoedlpxmv4/NotepadAppList.scale-200.png?rlkey=22dyn0l69e671qii5i7dwabie&st=g9btgj9v&raw=1" alt="Notepad"></div>
+        <div class="tile hidden hide" id="tile7"><img src="https://www.dropbox.com/scl/fi/xpcbl01omap0gstxubh8i/CMD.png?rlkey=uf1lwbjzn9u5prq1d0vqn1v5y&st=wajujwjk&raw=1" alt="cmd"></div>
+    </div>
+
+                <div id="win-toast" class="icon-container">
+                    <img src="https://www.dropbox.com/s/hcrcmtysxwv75np/WifiToast.png?st=01txbgfa&raw=1" alt="Icon 1" style="width:20px; height:20px; padding:5px 0px;">
+                    <img src="https://www.dropbox.com/s/ho63cnxnfcy22nk/%40AudioToastIcon.png?st=szu7yi0i&raw=1" alt="Icon 2">
+   		    <div class="battery-container">
+        	    	<div class="battery">
+            		<div class="battery-fill"></div>
+            		    <span class="battery-percentage">50</span>
+        	    	</div>
+    		   </div>
+                </div>
+                <button id="win-clock" class="taskbar-clock">
+                    <span id="taskbar_time" style="font-size: 0.75rem;">00:00</span>
+                    <span id="taskbar_date" style="font-size: 0.6rem;">00-00-0000</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="screensaver" class="screensaver sshidden">
+  <div class="textw">
+      <p id="A">Windows 12</p>
+      <p id="B">Windows 12</p>
+      <p id="C">Windows 12</p>
+      <p id="D">Windows 12</p>
+      <p id="E">Windows 12</p>
+      <p id="F">Windows 12</p>
+      <p id="G">Windows 12</p>
+      </div>
+  </div>
+
+    <audio id="button-click">
+        <source src="https://www.dropbox.com/scl/fi/c7glulr8oamfetmg5pngd/mixkit-modern-technology-select-3124.wav?rlkey=v73dbm9ubwlb66i5mshuy0mrn&st=fpimtyuu&raw=1" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+     <audio id="startup">
+        <source src="https://www.dropbox.com/scl/fi/jb1r91ccmt3smour3bb6q/windows-11-startup-sound-effect.mp3?rlkey=mfm1k5dmlgmg9k2mmqgrsvr4s&st=d2cjf6n7&raw=1" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+     <audio id="logoff">
+        <source src="https://www.dropbox.com/scl/fi/ci6bwnvlaqdk070gzffam/videoplayback.mp3?rlkey=1htcygiebirqiegaiurwn6zff&st=v6fji72w&raw=1" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <audio id="paintAudio">
+        <source src="https://www.dropbox.com/scl/fi/juh7wl24yz6z4eq4kz5v4/Paint_FX.mp3?rlkey=wws5twvzgqvzl53qphx530132&st=9sq4xrh2&dl=0" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
