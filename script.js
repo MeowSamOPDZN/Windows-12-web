@@ -388,8 +388,8 @@ document.addEventListener("DOMContentLoaded", () => {
         closeWindow(cmdWindow, 7);
         removeTilesSequentially();
         passwordInput.value = "";
-        document.getElementById("winIframe").src = "null";
-        document.getElementById("googleIframe").src = "null";
+        document.getElementById("winIframe").src = "";
+        document.getElementById("googleIframe").src = "";
         clearAll();
         clearAllCmd();
         clickSound.play();
@@ -2231,8 +2231,8 @@ document.addEventListener("DOMContentLoaded", () => {
         closeWindow(notepadWindow, 5);
         closeWindow(cmdWindow, 7);
         passwordInput.value = "";
-        document.getElementById("winIframe").src = "null";
-        document.getElementById("googleIframe").src = "null";
+        document.getElementById("winIframe").src = "";
+        document.getElementById("googleIframe").src = "";
         clearAll();
         clearAllCmd();
         ctx1.clearRect(0, 0, canvas.width + 1000, canvas.height + 1000);
