@@ -1061,7 +1061,7 @@ input.pass:hover {
 
 .eeClo {
     position: relative;
-    background: conic-gradient(from 45deg, #00aaff, #ff7f7f, #00aaff);
+    background: linear-gradient(to right, #ffa900, #ffffff, #29b000);
     background-clip: text;
     color: transparent;
     padding-top: 2.5px;
