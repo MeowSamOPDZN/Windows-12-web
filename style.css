@@ -1858,12 +1858,6 @@ canvas {
     z-index: 10
 }
 
-.eeflex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .eeDev {
     position: absolute;
     width: 100px;
@@ -1878,12 +1872,55 @@ canvas {
     z-index: 22;
 }
 
-.eeDevName {
-    position: absolute;
-    justify-content: center;
-    bottom: 15px;
+.card {
+    width: 250px;
+    height: 250px;
+    background: rgba(20,20,20,0.4);
     color: white;
-    font-size: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid rgb(95, 95, 95);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.user-name {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.user-info {
+    margin-top: 2px;
+    font-size: 12px;
+    color: rgb(156, 156, 156);
+}
+.user-bio {
+    margin-top: 2px;
+    font-size: 14px;
+}
+.github-btn {
+    margin-top: 15px;
+    background-color: #2ea44f;
+    color: black;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.github-btn:hover {
+    background-color: #115e21;
+    transition: background-color 0.3s ease;
 }
 
 .iframe-window-content {

@@ -81,6 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
     startSound.volume = 0.1;
     logOffSound.volume = 1;
 
+    function openGitHub() {
+        window.open("https://github.com/immobilesmile70/", "_blank");
+    }
+    window.openGitHub = openGitHub;
 
     function fadeToScreen(fromScreen, toScreen) {
         fromScreen.classList.remove("visible");
@@ -1168,7 +1172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     makeWindowDraggable(clockWindow, 100, 175);
     makeWindowDraggable(calculatorWindow, 200, 350);
     makeWindowDraggable(paintWindow, 700, 450);
-    makeWindowDraggable(eeWindow, 200, 200);
+    makeWindowDraggable(eeWindow, 290, 316.6);
     makeWindowDraggable(googleWindow, 700, 450);
     makeWindowDraggable(winWindow, 700, 450);
     makeWindowDraggable(notepadWindow, 700, 450);
@@ -1964,6 +1968,7 @@ document.addEventListener("DOMContentLoaded", () => {
         about: () => openApp("about"),
         developer: () => openApp("about"),
         dev: () => openApp("about"),
+        github: () => openApp("about"),
         whoami: () => "Administrator",
         winver: () => "The current windows version is 26H2!",
         version: () => "The current windows version is 26H2!",
@@ -1973,7 +1978,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         flip: (args) => args.length ? args.join(" ").split("").reverse().join("") : "Type something to flip!",
         "magic8ball": () => {
-            const responses = ["Yes!", "No.", "Maybe?", "Ask again later.", "Definitely!", "I don't think so."];
+            const responses = ["Yes!", "No.", "Maybe?", "Ask again later.", "Definitely!", "I don't think so.", "Probably not.", "Absolutely!", "Not a chance.", "Yes, but...", "Of course!", "I wouldn't count on it.", "Yes, definitely!", "No way!", "It's possible.", "Very likely.", "Unlikely.", "Yes, but be careful.", "No, not at all.", "Yes, go for it!", "No, don't do it."];
             return responses[Math.floor(Math.random() * responses.length)];
         },
         time: () => new Date().toLocaleTimeString(),
@@ -1982,7 +1987,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Why don't programmers like light mode? Cuz it attracts bugs.",
                 "There are 10 types of people in this world: those who understand binary and those who don’t.",
                 "Why do Java developers wear glasses? Because they don’t see sharp.",
-                "Money doesn't buy happiness, it buys goddamn happiness"
+                "Money doesn't buy happiness, it buys goddamn happiness.",
+                "Debugging: Being the detective in a crime movie where you are also the murderer.",
+                "In a world without materialistic things and fences, we wouldn't need Bill and Gates.",
+                "Why did the developer go broke? Because they used up all their cache.",
+                "Why did Windows break up with Linux? It found it too open.",
+                "Why do programmers hate nature? Too many bugs.",
+                "Why did the computer keep freezing? It left its Windows open.",
+                "Why was the developer always calm? They knew how to handle exceptions.",
+                "Why did the programmer quit their job? They didn't get arrays.",
+                "Why did the Windows user bring a ladder? To reach the cloud.",
+                "Why did the Windows user get lost? They couldn't find the Start button.",
+                "Why did the developer bring a pencil to the meeting? To draw some conclusions.",
+                "Why did the Windows user go to the beach? To refresh their desktop."
             ];
             return jokes[Math.floor(Math.random() * jokes.length)];
         },
@@ -1995,13 +2012,29 @@ document.addEventListener("DOMContentLoaded", () => {
         flipcoin: () => Math.random() < 0.5 ? "Heads" : "Tails",
 
         flipacoin: () => Math.random() < 0.5 ? "Heads" : "Tails",
+        
         roast: (input) => {
             const linuxRoasts = [
                 "Oh wow, enjoy compiling your Wi-Fi drivers for 3 hours.",
                 "Linux is great... until you actually need to do something productive.",
                 "Nice OS, too bad all games and apps ignore it.",
                 "Have fun spending hours fixing a broken package dependency!",
-                "Linux users be like: 'It’s not a bug, it’s a feature!'"
+                "Linux users be like: 'It’s not a bug, it’s a feature!'",
+                "Criticizing Windows from Linux is like complaining about a gourmet meal when all you know is fast food.",
+                "Maybe try a real OS instead of struggling with endless command lines!",
+                "Windows just works, while you’re busy chasing dependency nightmares.",
+                "Keep bashin' Windows, it's the only proof you still need to upgrade.",
+                "At least Windows users aren’t stuck updating drivers in a maze of terminal commands.",
+                "Linux: where every solution starts with 'open the terminal.'",
+                "Enjoy spending hours configuring your desktop environment just to make it look like Windows.",
+                "Linux users love to brag about stability, but their system crashes every time they try to play a game.",
+                "Oh, you use Linux? Let me guess, you’re still trying to figure out how to mount a USB drive.",
+                "Linux forums: where every answer is 'read the manual' or 'you're doing it wrong.'",
+                "Linux users: 'Windows is bloated!' Also Linux users: 'Let me install 15 different distros to find one that works.'",
+                "Linux: the only OS where updating can break your entire system.",
+                "Linux users love to hate Windows, but secretly dual-boot it for gaming.",
+                "Linux: because who needs user-friendly software when you have endless terminal commands?",
+                "Linux users: 'Windows is spyware!' Also Linux users: 'Let me install 10 random packages from unverified sources.'"
             ];
 
             const macRoasts = [
@@ -2009,7 +2042,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Ah yes, macOS. The best OS, as long as you don't mind paying $2000 for 8GB of RAM.",
                 "Enjoy your overpriced aluminum toy!",
                 "macOS updates: 'Here's a new emoji, but now your software is broken.'",
-                "Your macOS dock is just a glorified app launcher with extra steps."
+                "Your macOS dock is just a glorified app launcher with extra steps.",
+                "macOS: Where 'it just works' means 'it just works with Apple products.'",
+                "Oh, you use macOS? Let me guess, you spent more on your laptop than your car.",
+                "macOS users: 'Windows is so buggy!' Also macOS users: 'Why won't my $3000 laptop connect to Wi-Fi?'",
+                "Enjoy your macOS, where the spinning beach ball is a feature, not a bug.",
+                "macOS: The only OS where you need a dongle for your dongle.",
+                "macOS users: 'Windows is so complicated!' Also macOS users: 'How do I close this app again?'",
+                "Your macOS is great... until you need to run literally any software that isn't made by Apple.",
+                "macOS: Where 'Pro' means 'pay more for fewer ports.'",
+                "macOS users: 'Windows is ugly!' Also macOS users: 'Let me show you my 15 identical gray windows.'",
+                "macOS: The OS that makes you feel special for paying extra for basic functionality.",
+                "macOS users: 'Windows is so slow!' Also macOS users: 'Why does my $3000 MacBook overheat when I open Chrome?'",
+                "macOS: Because who needs gaming when you can have a touch bar?",
+                "macOS users: 'Windows is so insecure!' Also macOS users: 'Let me install this random app from the App Store.'",
+                "macOS: The OS that convinces you to buy a new laptop every time you need more storage."
             ];
 
             if (input.includes("linux")) {
