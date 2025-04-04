@@ -855,14 +855,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let resize = false;
-
+    
     document.addEventListener("click", (e) => {
         if (resize || e.target.closest(".resizer")) return;
 
         let clickedTile = e.target.closest(".tile");
         let clickedWindow = e.target.closest(".app-window");
 
-        if (e.target.closest(".no-resize")) return;
+        if (e.target.closest(".no-resize") || e.target.closest(".window-header")) return;
 
         if (clickedWindow && e.target !== clickedWindow) return;
 
