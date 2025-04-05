@@ -687,11 +687,14 @@ document.addEventListener("DOMContentLoaded", () => {
             let windowRect = windowElement.getBoundingClientRect();
 
             let tileCenterX = tileRect.left + tileRect.width / 2;
+            let tileCenterY = tileRect.top + tileRect.height / 2;
             let newLeft = tileCenterX - windowRect.width / 2;
+            let newTop = tileCenterY - windowRect.height / 2;
 
             setTimeout(() => {
                 windowElement.classList.add("mini");
                 windowElement.style.left = `${newLeft}px`;
+                windowElement.style.top = `${newTop}px`;
             }, 10);
 
             setTimeout(() => {
@@ -727,7 +730,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function bounceUpAndReset(tile, delay = 200) {
+    function bounceUpAndReset(tile, delay = 300) {
         let img = tile.querySelector("img");
         if (!img) return;
 
@@ -738,7 +741,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, delay);
     }
 
-    function bounceDownAndReset(tile, delay = 200) {
+    function bounceDownAndReset(tile, delay = 320) {
         let img = tile.querySelector("img");
         if (!img) return;
 
@@ -749,7 +752,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, delay);
     }
 
-    function bounceAtPlace(tile, delay = 200) {
+    function bounceAtPlace(tile, delay = 150) {
         let img = tile.querySelector("img");
         if (!img) return;
 
@@ -1264,21 +1267,28 @@ document.addEventListener("DOMContentLoaded", () => {
             const windowElement = e.target.closest(".app-window");
             if (!windowElement) return;
 
-            windowElement.dataset.prevLeft = windowElement.style.left || "200px";
-            windowElement.dataset.prevTop = windowElement.style.top || "200px";
-
             windowElement.classList.add('mini');
 
             let index = windowIds.indexOf(windowElement.id);
             let tile = document.getElementById(tileIds[index]);
             if (!tile) return;
 
+            windowElement.dataset.prevLeft = windowElement.style.left || "200px";
+            windowElement.dataset.prevTop = windowElement.style.top || "200px";
+
             let tileRect = tile.getBoundingClientRect();
             let windowRect = windowElement.getBoundingClientRect();
-            let deltaX = tileRect.left - windowRect.left;
 
-            let currentLeft = parseInt(windowElement.style.left) || 0;
-            windowElement.style.left = `${currentLeft + deltaX}px`;
+            let tileCenterX = tileRect.left + tileRect.width / 2;
+            let tileCenterY = tileRect.top + tileRect.height / 2;
+            let newLeft = tileCenterX - windowRect.width / 2;
+            let newTop = tileCenterY - windowRect.height / 2;
+
+            setTimeout(() => {
+                windowElement.classList.add("mini");
+                windowElement.style.left = `${newLeft}px`;
+                windowElement.style.top = `${newTop}px`;
+            }, 10);
 
             setTimeout(() => {
                 tile.classList.remove("selected");
