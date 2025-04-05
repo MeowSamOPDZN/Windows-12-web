@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const googleAppBtn = document.getElementById('google-app-btn');
     const winAppBtn = document.getElementById('win-app-btn');
     const eeWindow = document.getElementById("ee-window");
-    const monitorOut = document.getElementById("monitor");
     const screensaver = document.getElementById("screensaver");
     const userStart = document.getElementById("user-start_screen");
     const userStartBtn = document.getElementById("spc");
@@ -69,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let desktopGrid = document.getElementById('desktop-grid');
     let highestZIndex = 1000; // Initialize highest z-index for windows
     let isRunning = false; // Set to true to simulate running state
-    let isLoading = false; // Set to true to simulate loading screen
     let faultyStart = false; // Set to true to simulate a faulty start
     var isOnLS = false; // Is on lock screen or not
 
@@ -595,7 +593,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    const sunIcon = document.getElementById("sun-icon");
+
     document.querySelectorAll(".sliderr").forEach(slide => {
+        let initialValue = 0;
+        let lastValue = 0;
+        let isDragging = false;
+
         function updateSliderM() {
             let percent = 100 - (this.value / this.max) * 100;
             this.style.setProperty("--fill-height", percent + "%");
@@ -604,8 +608,26 @@ document.addEventListener("DOMContentLoaded", () => {
             let opacityValue = 0.8 - (this.value / 100) * 0.8;
             if (this.id === "brightness-slider") {
                 document.querySelector(".overlay").style.opacity = opacityValue;
+
+                if (isDragging) {
+                    let delta = this.value - lastValue;
+                    if (Math.abs(delta) > 2) {
+                        sunIcon.style.transform = `rotateZ(${parseInt(sunIcon.style.transform.replace(/[^0-9\-]/g, '') || 0) + delta}deg)`;
+                        lastValue = this.value;
+                    }
+                }
             }
         }
+
+        slide.addEventListener("mousedown", () => {
+            isDragging = true;
+            initialValue = slide.value;
+            lastValue = slide.value;
+        });
+
+        slide.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
 
         slide.addEventListener("input", updateSliderM);
         updateSliderM.call(slide);
@@ -862,7 +884,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let resize = false;
-    
+
     document.addEventListener("click", (e) => {
         if (resize || e.target.closest(".resizer")) return;
 
@@ -2022,7 +2044,7 @@ document.addEventListener("DOMContentLoaded", () => {
         flipcoin: () => Math.random() < 0.5 ? "Heads" : "Tails",
 
         flipacoin: () => Math.random() < 0.5 ? "Heads" : "Tails",
-        
+
         roast: (input) => {
             const linuxRoasts = [
                 "Oh wow, enjoy compiling your Wi-Fi drivers for 3 hours.",
@@ -2301,7 +2323,6 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => quickSettings.classList.add("hidden"), 300);
         display.value === "0";
         removeTilesSequentially();
-
         bsodScreen.classList.remove("not");
 
         fakeBSOD(() => {
@@ -2536,11 +2557,11 @@ document.addEventListener("DOMContentLoaded", () => {
         moreDIcon.classList.remove('active');
     });
 
-    noteDIcon.addEventListener('dblclick', () => {
+    notepadDIcon.addEventListener('dblclick', () => {
         openWindow(notepadWindow, 5);
         clickSound.volume = 0.1;
         clickSound.play();
-        noteDIcon.classList.remove('active');
+        notepadDIcon.classList.remove('active');
     });
 
     cmdDIcon.addEventListener('dblclick', () => {
