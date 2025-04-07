@@ -69,7 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let highestZIndex = 1000; // Initialize highest z-index for windows
     let isRunning = false; // Set to true to simulate running state
     let faultyStart = false; // Set to true to simulate a faulty start
-    var isOnLS = false; // Is on lock screen or not
+    let isOnLS = false; // Is on lock screen or not
+    let isBSOD = false; // Is on BSOD or not
 
     // Pin, Duh!
     const correctPin = "1234";
@@ -88,34 +89,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     class Spinner {
         constructor(element, codepoints, delay = 30, idleChar = 0xE100) {
-          this.element = element;
-          this.codepoints = codepoints;
-          this.delay = delay;
-          this.idleChar = idleChar;
-          this.frame = 0;
-          this.intervalId = null;
+            this.element = element;
+            this.codepoints = codepoints;
+            this.delay = delay;
+            this.idleChar = idleChar;
+            this.frame = 0;
+            this.intervalId = null;
         }
-  
+
         start() {
-          if (this.intervalId) return;
-  
-          this.intervalId = setInterval(() => {
-            this.element.textContent = String.fromCharCode(this.codepoints[this.frame]);
-            this.frame = (this.frame + 1) % this.codepoints.length;
-          }, this.delay);
+            if (this.intervalId) return;
+
+            this.intervalId = setInterval(() => {
+                this.element.textContent = String.fromCharCode(this.codepoints[this.frame]);
+                this.frame = (this.frame + 1) % this.codepoints.length;
+            }, this.delay);
         }
-  
+
         stop() {
-          if (!this.intervalId) return;
-  
-          clearInterval(this.intervalId);
-          this.intervalId = null;
-          this.element.textContent = String.fromCharCode(this.idleChar);
-          this.frame = 0;
+            if (!this.intervalId) return;
+
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+            this.element.textContent = String.fromCharCode(this.idleChar);
+            this.frame = 0;
         }
-      }
-  
-      const codepoints = [
+    }
+
+    const codepoints = [
         [0xE100, 0xE109],
         [0xE10A, 0xE10F],
         [0xE110, 0xE119],
@@ -131,28 +132,28 @@ document.addEventListener("DOMContentLoaded", () => {
         [0xE160, 0xE169],
         [0xE16A, 0xE16F],
         [0xE170, 0xE176]
-      ].flatMap(([start, end]) =>
+    ].flatMap(([start, end]) =>
         Array.from({ length: end - start + 1 }, (_, i) => start + i)
-      );
-  
-      const spinner1 = new Spinner(document.getElementById('spinner1'), codepoints);
-      const spinner2 = new Spinner(document.getElementById('spinner2'), codepoints);
-  
-      function startSpinner1() {
+    );
+
+    const spinner1 = new Spinner(document.getElementById('spinner1'), codepoints);
+    const spinner2 = new Spinner(document.getElementById('spinner2'), codepoints);
+
+    function startSpinner1() {
         spinner1.start();
-      }
-  
-      function stopSpinner1() {
+    }
+
+    function stopSpinner1() {
         spinner1.stop();
-      }
-  
-      function startSpinner2() {
+    }
+
+    function startSpinner2() {
         spinner2.start();
-      }
-  
-      function stopSpinner2() {
+    }
+
+    function stopSpinner2() {
         spinner2.stop();
-      }
+    }
 
     function fadeToScreen(fromScreen, toScreen) {
         fromScreen.classList.remove("visible");
@@ -181,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingScreen.classList.remove("hid");
         loadingScreen.classList.add("visible");
         document.body.style.cursor = "none";
+        spinner2.start();
     }
 
     function hideLoadingScreen() {
@@ -189,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.cursor = "default";
         setTimeout(() => {
             loadingScreen.classList.add("removeDOM");
+            spinner2.stop();
         }, 550);
     }
 
@@ -200,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     userStartBtn.addEventListener("click", () => {
         const rDelay = Math.floor(Math.random() * 2000) + 3000;
+        bootingScreen.classList.remove("removeDOM");
         bootingScreen.classList.add("visible");
         userStart.classList.add("hid");
         userStart.classList.remove("visible");
@@ -439,12 +443,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lockButton.addEventListener("click", () => {
         shutDown();
+        clickSound.volume = 0.1;
+        clickSound.play();
         fadeToScreen(desktopScreen, userStart);
     });
 
     lockButton2.addEventListener("click", () => {
         shutDown();
         handleSwipeDown();
+        clickSound.volume = 0.1;
+        clickSound.play();
         fadeToScreen(lockScreen, userStart);
     });
 
@@ -453,9 +461,11 @@ document.addEventListener("DOMContentLoaded", () => {
         isOnLS = false;
         statusText.textContent = "Shutting Down";
         setTimeout(() => {
-            logOffSound.play();
-        }, 1500)
-        logOffSound.volume = 1;
+            if (!isBSOD) {
+                logOffSound.volume = 1;
+                logOffSound.play();
+            }
+        }, 1500);
         closeWindow(clockWindow, 2);
         closeWindow(calculatorWindow, 1);
         closeWindow(paintWindow, 0);
@@ -740,7 +750,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let tile = document.getElementById(tileIds[index]);
         windowElement.classList.remove('mini');
-        windowElement.classList.remove("removeDOM");
+        windowElement.style.display = "flex";
 
         if (windowElement.classList.contains("minimized")) {
             bounceUpAndReset(tile);
@@ -763,9 +773,9 @@ document.addEventListener("DOMContentLoaded", () => {
         windowElement.classList.add("hidden");
         windowElement.classList.remove("open");
 
-        setTimeout(() => { 
-            windowElement.classList.add("removeDOM");
-        }, 600);
+        setTimeout(() => {
+            windowElement.style.display = "none";
+        }, 300);
 
         removeTile(index);
     }
@@ -1426,6 +1436,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showScreensaver() {
         if (isRunning) {
+            screensaver.classList.remove("removeDOM");
             screensaver.classList.add("ssvisible");
             screensaver.classList.remove("sshidden");
             document.body.style.cursor = "none";
@@ -1435,7 +1446,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function hideScreensaver() {
         screensaver.classList.remove("ssvisible");
         screensaver.classList.add("sshidden");
-        document.body.style.cursor = "default";
+        setTimeout(() => {
+            document.body.style.cursor = "default";
+            screensaver.classList.add("removeDOM");
+        }, 1000);
         resetScreensaverTimer();
     }
 
@@ -2377,32 +2391,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function triggerBSOD() {
         document.body.style.cursor = "none";
+        bsodScreen.classList.remove("removeDOM");
         allScreens.forEach((screen) => (screen.style.visibility = "hidden"));
-        isRunning = false;
-        isOnLS = false;
-        statusText.textContent = "Shutting Down";
-        closeWindow(clockWindow, 2);
-        closeWindow(calculatorWindow, 1);
-        closeWindow(paintWindow, 0);
-        closeWindow(eeWindow, 6);
-        closeWindow(googleWindow, 3);
-        closeWindow(winWindow, 4);
-        closeWindow(notepadWindow, 5);
-        closeWindow(cmdWindow, 7);
-        passwordInput.value = "";
-        document.getElementById("winIframe").src = "";
-        document.getElementById("googleIframe").src = "";
-        clearAll();
-        clearAllCmd();
-        ctx1.clearRect(0, 0, canvas.width + 1000, canvas.height + 1000);
-        clearDisplay();
-        handleSwipeDown();
-        startMenu.classList.remove("show");
-        setTimeout(() => startMenu.classList.add("hidden"), 300);
-        quickSettings.classList.remove("show");
-        setTimeout(() => quickSettings.classList.add("hidden"), 300);
-        display.value === "0";
-        removeTilesSequentially();
+        isBSOD = true;
+        shutDown();
         bsodScreen.classList.remove("not");
 
         fakeBSOD(() => {
@@ -2413,6 +2405,7 @@ document.addEventListener("DOMContentLoaded", () => {
             lockScreen.classList.remove("visible");
             desktopScreen.classList.add("hid");
             desktopScreen.classList.remove("visible");
+            spinner2.start();
             setTimeout(() => {
                 showLoadingScreen();
                 logOffSound.volume = 1;
@@ -2420,9 +2413,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 userStart.classList.remove("hid");
                 setTimeout(() => {
                     userStart.classList.add("visible");
+                   // fadeToScreen(desktopScreen, userStart);
                     setTimeout(() => {
                         hideLoadingScreen();
                         document.body.style.cursor = "default";
+                        bsodScreen.classList.add("removeDOM");
+                        isBSOD = false;
                     }, 1000);
                 }, 2000);
             }, 1500);
