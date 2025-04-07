@@ -79,28 +79,105 @@ document.addEventListener("DOMContentLoaded", () => {
     startSound.volume = 0.1;
     logOffSound.volume = 1;
 
+    let delay;
+
     function openGitHub() {
         window.open("https://github.com/immobilesmile70/", "_blank");
     }
     window.openGitHub = openGitHub;
 
+    class Spinner {
+        constructor(element, codepoints, delay = 30, idleChar = 0xE100) {
+          this.element = element;
+          this.codepoints = codepoints;
+          this.delay = delay;
+          this.idleChar = idleChar;
+          this.frame = 0;
+          this.intervalId = null;
+        }
+  
+        start() {
+          if (this.intervalId) return;
+  
+          this.intervalId = setInterval(() => {
+            this.element.textContent = String.fromCharCode(this.codepoints[this.frame]);
+            this.frame = (this.frame + 1) % this.codepoints.length;
+          }, this.delay);
+        }
+  
+        stop() {
+          if (!this.intervalId) return;
+  
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+          this.element.textContent = String.fromCharCode(this.idleChar);
+          this.frame = 0;
+        }
+      }
+  
+      const codepoints = [
+        [0xE100, 0xE109],
+        [0xE10A, 0xE10F],
+        [0xE110, 0xE119],
+        [0xE11A, 0xE11F],
+        [0xE120, 0xE129],
+        [0xE12A, 0xE12F],
+        [0xE130, 0xE139],
+        [0xE13A, 0xE13F],
+        [0xE140, 0xE149],
+        [0xE14A, 0xE14F],
+        [0xE150, 0xE159],
+        [0xE15A, 0xE15F],
+        [0xE160, 0xE169],
+        [0xE16A, 0xE16F],
+        [0xE170, 0xE176]
+      ].flatMap(([start, end]) =>
+        Array.from({ length: end - start + 1 }, (_, i) => start + i)
+      );
+  
+      const spinner1 = new Spinner(document.getElementById('spinner1'), codepoints);
+      const spinner2 = new Spinner(document.getElementById('spinner2'), codepoints);
+  
+      function startSpinner1() {
+        spinner1.start();
+      }
+  
+      function stopSpinner1() {
+        spinner1.stop();
+      }
+  
+      function startSpinner2() {
+        spinner2.start();
+      }
+  
+      function stopSpinner2() {
+        spinner2.stop();
+      }
+
     function fadeToScreen(fromScreen, toScreen) {
         fromScreen.classList.remove("visible");
         fromScreen.classList.add("hid");
-
+        document.body.style.cursor = "none";
         setTimeout(() => {
-            showLoadingScreen()
+            showLoadingScreen();
+            startSpinner2();
             toScreen.classList.remove("hid");
+            fromScreen.classList.add("removeDOM");
+            toScreen.classList.remove("removeDOM");
+            const rDelay = Math.floor(Math.random() * 1000) + 3000;
+            delay = rDelay;
             setTimeout(() => {
                 toScreen.classList.add("visible");
                 setTimeout(() => {
                     hideLoadingScreen();
+                    setTimeout(stopSpinner2, 1000);
                 }, 1000);
-            }, 2000);
+            }, delay);
         }, 1500);
     }
 
     function showLoadingScreen() {
+        loadingScreen.classList.remove("removeDOM");
         loadingScreen.classList.remove("hid");
         loadingScreen.classList.add("visible");
         document.body.style.cursor = "none";
@@ -110,6 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingScreen.classList.add("hid");
         loadingScreen.classList.remove("visible");
         document.body.style.cursor = "default";
+        setTimeout(() => {
+            loadingScreen.classList.add("removeDOM");
+        }, 550);
     }
 
     userStart.classList.add("visible");
@@ -119,17 +199,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     userStartBtn.addEventListener("click", () => {
+        const rDelay = Math.floor(Math.random() * 2000) + 3000;
         bootingScreen.classList.add("visible");
         userStart.classList.add("hid");
         userStart.classList.remove("visible");
         document.body.style.cursor = "none";
         statusText.textContent = "Starting Up";
+        startSpinner1();
         setTimeout(() => {
             fadeToScreen(bootingScreen, lockScreen);
             updateLockScreenTime();
             setTimeout(() => { isOnLS = true; }, 3500);
             isRunning = true;
-        }, 3700);
+            setTimeout(stopSpinner1, 1000);
+        }, rDelay);
 
         if (faultyStart) {
             faultyText.style.display = "block";
@@ -146,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       </div>
                   </div>
               `;
-            }, 4750);
+            }, rDelay + 1050);
         }
     });
 
@@ -160,10 +243,10 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTime(currentTimeElement);
         setInterval(() => {
             updateTime(currentTimeElement);
-        }, 1000)
+        }, 1000);
     }
 
-    // The same one as above but for taskbar and I made a seperate function for no reason at all idk please don't judge me.
+    // The same one as above but for taskbar and I made a separate function for no reason at all idk please don't judge me.
     function updateTaskbarTime() {
         updateTime(taskbarTimeElement);
         setInterval(() => {
@@ -220,19 +303,19 @@ document.addEventListener("DOMContentLoaded", () => {
             startSound.volume = 0.5;
             setTimeout(() => {
                 startSound.play();
-            }, 2500);
+            }, delay + 500);
 
             winLogo.classList.remove("show");
-            setTimeout(() => winLogo.classList.add("show"), 4500);
+            setTimeout(() => winLogo.classList.add("show"), delay + 2500);
 
             winClock.classList.remove("show");
-            setTimeout(() => winClock.classList.add("show"), 4500);
+            setTimeout(() => winClock.classList.add("show"), delay + 2500);
 
             winToast.classList.remove("show");
-            setTimeout(() => winToast.classList.add("show"), 4500);
+            setTimeout(() => winToast.classList.add("show"), delay + 2500);
 
             taskbar.classList.remove("show");
-            setTimeout(() => taskbar.classList.add("show"), 4000);
+            setTimeout(() => taskbar.classList.add("show"), delay + 2500);
 
             handleSwipeUp();
             isOnLS = false;
@@ -284,6 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let hideTaskbarTimeout; // Timeout for hiding taskbar
     let maxiCount = 0; // Count of maximized windows
+    let isMouseInside = false; // Flag to check if mouse is inside the taskbar
 
     function updateTaskbarVisibility() {
         if (maxiCount > 0) {
@@ -297,6 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hoverArea.addEventListener("mouseenter", () => {
         clearTimeout(hideTaskbarTimeout);
         taskbar.classList.add("show");
+        isMouseInside = true;
     });
 
     taskbar.addEventListener("mouseleave", () => {
@@ -304,23 +389,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (startMenu.classList.contains("hidden") && quickSettings.classList.contains("hidden")) {
                 hideTaskbarTimeout = setTimeout(() => {
                     taskbar.classList.remove("show");
-                }, 900);
+                }, 1500);
             }
             else {
                 clearTimeout(hideTaskbarTimeout);
                 taskbar.classList.add("show");
             }
         }
-    });
-
-    taskbar.addEventListener("click", (event) => {
-        clearTimeout(hideTaskbarTimeout);
-        taskbar.classList.add("show");
-    });
-
-    taskbar.addEventListener("dblclick", (event) => {
-        clearTimeout(hideTaskbarTimeout);
-        taskbar.classList.add("show");
+        isMouseInside = false;
     });
 
     document.querySelector(".windows-logo").addEventListener("click", function () {
@@ -340,10 +416,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const startHidden = startMenu.classList.contains("hidden");
                 const quickPanelHidden = quickSettings.classList.contains("hidden");
 
-                if (startHidden && quickPanelHidden && maxiCount > 0) {
+                if (startHidden && quickPanelHidden && maxiCount > 0 && !isMouseInside) {
                     hideTaskbarTimeout = setTimeout(() => {
                         taskbar.classList.remove("show");
-                    }, 85);
+                    }, 75);
                 } else {
                     clearTimeout(hideTaskbarTimeout);
                     taskbar.classList.add("show");
@@ -596,7 +672,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const sunIcon = document.getElementById("sun-icon");
 
     document.querySelectorAll(".sliderr").forEach(slide => {
-        let initialValue = 0;
         let lastValue = 0;
         let isDragging = false;
 
@@ -665,6 +740,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let tile = document.getElementById(tileIds[index]);
         windowElement.classList.remove('mini');
+        windowElement.classList.remove("removeDOM");
 
         if (windowElement.classList.contains("minimized")) {
             bounceUpAndReset(tile);
@@ -686,6 +762,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         windowElement.classList.add("hidden");
         windowElement.classList.remove("open");
+
+        setTimeout(() => { 
+            windowElement.classList.add("removeDOM");
+        }, 600);
 
         removeTile(index);
     }
@@ -841,8 +921,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const tile = document.getElementById(tileIds[tileOrder[i]]);
             if (tile) {
                 setTimeout(() => {
-                    tile.style.transform = 'translateX(50px)';
-                    setTimeout(() => tile.style.transform = 'translateX(0)', 150);
+                    tile.style.transform = 'translateX(50px) scaleY(1)';
+                    setTimeout(() => tile.style.transform = 'translateX(0) scaleY(1)', 150);
                 }, delay);
                 delay += 50;
             }
@@ -857,7 +937,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let windowEl = document.getElementById(windowIds[index]);
             if (windowEl) {
                 let zIndex = parseInt(windowEl.style.zIndex) || 0;
-                if (zIndex > highestZ) {
+                if (zIndex > highestZ && windowEl.classList.contains("open")) {
                     highestZ = zIndex;
                     highestZIndexWindow = index;
                 }
@@ -2557,11 +2637,11 @@ document.addEventListener("DOMContentLoaded", () => {
         moreDIcon.classList.remove('active');
     });
 
-    notepadDIcon.addEventListener('dblclick', () => {
+    noteDIcon.addEventListener('dblclick', () => {
         openWindow(notepadWindow, 5);
         clickSound.volume = 0.1;
         clickSound.play();
-        notepadDIcon.classList.remove('active');
+        noteDIcon.classList.remove('active');
     });
 
     cmdDIcon.addEventListener('dblclick', () => {

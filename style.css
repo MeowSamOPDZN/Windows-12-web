@@ -24,20 +24,6 @@ body {
     border-radius: 22px;
 }
 
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
 .lockflex {
     display: flex;
     flex-direction: column;
@@ -67,14 +53,12 @@ body {
 
 .inputflex {
     position: static;
-    display: flex;
     margin-bottom: 15px;
-    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 160px;
-    height: 35px;
+    width: 230px;
+    height: 60px;
 }
 
 .timeText {
@@ -84,10 +68,8 @@ body {
     flex-direction: column;
     font-weight: bold;
     color: white;
-    font-size: 60px;
+    font-size: 4.5rem;
     top: 60px;
-    justify-content: top;
-    scale: 1;
     transition: transform 0.4s ease-in-out, scale 0.4s ease-in-out;
     filter: blur(0px);
     text-shadow: 0 8px 15px rgba(0, 0, 0, 0.8);
@@ -97,7 +79,7 @@ body {
     position: relative;
     font-weight: bold;
     color: white;
-    font-size: 15px;
+    font-size: 1.25rem;
     top: 1px;
     text-shadow: 0 8px 15px rgba(0, 0, 0, 0.8);
 }
@@ -105,32 +87,28 @@ body {
 #User_Icon {
     position: static;
     margin-bottom: 10px;
-    width: 100px;
-    height: 100px;
-    background: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Default%20Profile%20Photo.webp?raw=true');
+    width: 120px;
+    height: 120px;
+    background: url(https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Default%20Profile%20Photo.webp?raw=true);
     background-size: cover;
     background-position: center;
-    border-radius: 50px;
+    border-radius: 50%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .pass {
-    width: 100px;
-    height: 20px;
-    border-radius: 6px;
+    width: 163px;
+    height: 30px;
+    border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
-    outline: none;
-    text-align: right;
     padding: 8px;
-    border: 0px;
     outline: none;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     margin: 0px;
-    font-size: 1rem;
-    border: 1px solid #00aaff;
+    font-size: 1.25rem;
     text-align: center;
 }
 
@@ -162,15 +140,16 @@ input.pass:hover {
 
 .username {
     position: static;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
     color: white;
     font-weight: bold;
 }
 
 .unlock {
-    width: 40px;
-    height: 36px;
-    border-radius: 6px;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
     flex-shrink: 0;
     font-weight: bold;
     text-align: center;
@@ -178,7 +157,7 @@ input.pass:hover {
     color: white;
     background-color: rgba(255, 255, 255, 0.15);
     -webkit-tap-highlight-color: transparent;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease-in-out;
     margin: 0px;
     padding: 8px;
     font-size: 1rem;
@@ -186,7 +165,6 @@ input.pass:hover {
 
 .unlock:hover {
     background-color: rgba(50, 50, 50, 0.4);
-    transition: background-color 0.2s ease;
 }
 
 .tex {
@@ -225,50 +203,18 @@ input.pass:hover {
     font-size: 20px;
 }
 
-.loading {
+@font-face {
+    font-family: 'SegoeBootSpinner';
+    src: url('https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Fonts/segoe_slboot.ttf') format('truetype');
+}
+
+.spinner {
+    font-family: 'SegoeBootSpinner';
+    font-size: 2rem;
+    user-select: none;
     display: block;
     position: relative;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    border: 0.3rem solid rgba(255, 255, 255, 0);
-    border-top-color: #ffffff;
-    animation: spin 1s infinite linear;
-    margin-top: 100px;
-    margin-bottom: 20px;
-}
-
-.loading .edge {
-    display: block;
-    position: absolute;
-    border-radius: 50%;
-    width: 0.32rem;
-    height: 0.32rem;
-    background: #fff;
-}
-
-.loading .edge.edge-left {
-    top: 0.15rem;
-    left: 0.07rem;
-}
-
-.loading .edge.edge-right {
-    top: 0.15rem;
-    right: 0.07rem;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    50% {
-        transform: rotate(270deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    margin-top: 200px;
 }
 
 .load-status-text {
@@ -298,10 +244,15 @@ input.pass:hover {
     pointer-events: none;
 }
 
+.screen.removeDOM {
+    display: none;
+}
+
 .screen.visible {
     opacity: 1;
     transition: opacity 1s ease-in-out;
     pointer-events: auto;
+    display: flex;
 }
 
 #booting-up_screen {
@@ -463,7 +414,6 @@ input.pass:hover {
 
 .tile:hover {
     background: rgba(150, 150, 150, 0.17);
-    transition: transform 0.3s ease, opacity 0.2s, margin 0.3s ease-in-out, width 0.3s ease, background-color 0.3s ease, border-top 0.2s ease;
 }
 
 .hidden {
@@ -532,13 +482,12 @@ input.pass:hover {
 
 .icon-container:hover {
     background-color: rgba(170, 170, 170, 0.15);
-    transition: opacity 1s ease, transform 0.5s ease, background-color 0.3s ease;
 }
 
 .icon-container.show {
     opacity: 1;
     transform: translateY(0px) scale(0.7);
-    transition: opacity 1s ease, transform 0.5s ease, background-color 0.3s ease;
+    transition: opacity 1s ease, transform 0.5s ease, background-color 0.3s ease;   
 }
 
 .icon-container img {
@@ -641,12 +590,10 @@ input.pass:hover {
 
 .windows-logo:hover {
     box-shadow: 0 0 14px rgba(0, 120, 215, 0.5);
-    transition: transform 0.15s ease, box-shadow 0.3s ease-in-out;
 }
 
 .windows-logo:active {
     transform: scale(0.8);
-    transition: transform 0.15s ease, box-shadow 0.3s ease-in-out;
 }
 
 .windows-logo.open {
@@ -711,40 +658,43 @@ input.pass:hover {
 }
 
 .windows-logo_ini {
-    width: 60px;
-    height: 60px;
+    width: 125px;
+    height: 125px;
     position: relative;
     opacity: 1;
     transform: scale(1);
 }
 
 .logo-part_ini {
-    width: 28px;
-    height: 28px;
+    width: 59px;
+    height: 59px;
     position: absolute;
     background-color: #0078D7;
-    border-radius: 2px;
     animation: popOut 2.5s ease-in-out forwards infinite, breathing 2s ease-in-out infinite;
 }
 
 .part11 {
     top: 0;
     left: 0;
+    border-radius: 15px 2px 2px 2px;
 }
 
 .part12 {
     top: 0;
     right: 0;
+    border-radius: 2px 15px 2px 2px;
 }
 
 .part13 {
     bottom: 0;
     left: 0;
+    border-radius: 2px 2px 2px 15px;
 }
 
 .part14 {
     bottom: 0;
     right: 0;
+    border-radius: 2px 2px 15px 2px;
 }
 
 @keyframes popOut {
@@ -823,7 +773,6 @@ input.pass:hover {
 
 .taskbar-clock:hover {
     background-color: rgba(170, 170, 170, 0.15);
-    transition: opacity 1s ease, transform 0.5s ease, background-color 0.3s ease;
 }
 
 .taskbar-clock.show {
@@ -868,7 +817,7 @@ input.pass:hover {
     width: calc(100% - 20px);
     height: calc(100% - 80px);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgb(67 63 67 / 78%);
+    border: 1px solid rgb(57 53 57 / 78%);
 }
 
 .app-button {
@@ -880,8 +829,8 @@ input.pass:hover {
     border-radius: 7px;
     padding: 10px;
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.25);
-    transition: background-color 0.2s ease;
-    border: 1px solid rgb(67 63 67 / 78%);
+    transition: background-color 0.3s ease;
+    border: 1px solid rgb(57 53 57 / 78%);
 }
 
 .app-button img {
@@ -910,15 +859,14 @@ input.pass:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     width: 87px;
     height: 30.5px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
     position: fixed;
     bottom: 15px;
-    border: 1px solid rgb(67 63 67 / 78%);
+    border: 1px solid rgb(57 53 57 / 78%);
 }
 
 .bottom-right-chip:hover {
     background-color: rgba(50, 50, 50, 0.4);
-    transition: background-color 0.2s ease;
 }
 
 .chip-icon {
@@ -944,21 +892,20 @@ input.pass:hover {
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2);
     background-position-x: 50%;
     background-position-y: 50%;
-    background-size: 25px 25px;
+    background-size: 20px 20px;
     background-color: rgba(70, 70, 70, 0.3);
-    border: 1px solid rgb(67 63 67 / 78%);
-    padding: 10px 15px;
+    border: 1px solid rgb(57 53 57 / 78%);
+    padding: 10px;
     border-radius: 7px;
     font-size: 14px;
     height: 30.5px;
     width: 30.5px;
     -webkit-tap-highlight-color: transparent;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
 .shutdown-button:hover {
     background-color: rgba(50, 50, 50, 0.4);
-    transition: background-color 0.2s ease;
 }
 
 .start-menu::before {
@@ -1098,22 +1045,18 @@ input.pass:hover {
 
 .minimize-btn:hover {
     background-color: rgba(120, 120, 120, 0.7);
-    transition: background-color 0.3s ease;
 }
 
 .maximize-btn:hover {
     background-color: rgba(120, 120, 120, 0.7);
-    transition: background-color 0.3s ease;
 }
 
 .restore-btn:hover {
     background-color: rgba(120, 120, 120, 0.7);
-    transition: background-color 0.3s ease;
 }
 
 .close-btn:hover {
     background-color: rgba(255, 30, 30, 0.7);
-    transition: background-color 0.3s ease;
 }
 
 .window-controls button svg {
@@ -1147,6 +1090,10 @@ input.pass:hover {
     pointer-events: none;
 }
 
+.app-window.removeDOM {
+    display: none;
+}
+
 .app-window.minimized {
     opacity: 0;
     transform: scale(0);
@@ -1157,6 +1104,7 @@ input.pass:hover {
 }
 
 .app-window.open {
+    display:flex;
     opacity: 1;
     transition: opacity 0.3s ease-in-out, transform 0.4s ease,
         width 0.15s ease-in-out, height 0.15s ease-in-out,
@@ -1228,7 +1176,6 @@ input.pass:hover {
 
 .context-menu-item:hover {
     background-color: rgba(100, 100, 100, 0.4);
-    transition: background-color 0.3s ease, color 0.3s ease;
     z-index: 10000;
 }
 
@@ -1666,7 +1613,7 @@ canvas {
     --mo-color: rgba(34, 37, 42, 0.5);
     --mo-hover-color: #0099e6;
     --ac-bg: rgba(34, 37, 42, 0.5);
-    --ac-hover-color: #0099e6;
+    --ac-hover-color: #4a4a4a;
 }
 
 .calculator {
@@ -1727,12 +1674,10 @@ canvas {
     color: var(--button-hover-color);
     border-radius: 9px;
     transform: scale(1);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .butto:active {
     transform: scale(0.9);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .zero {
@@ -1753,12 +1698,10 @@ canvas {
     background-color: var(--button-hover-bg);
     color: var(--button-hover-color);
     border-radius: 9px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .zero:active {
     transform: scale(0.9);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .equal {
@@ -1780,12 +1723,10 @@ canvas {
     background-color: var(--equal-hover-bg);
     color: var(--equal-hover-color);
     border-radius: 9px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .equal:active {
     transform: scale(0.9);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .Del,
@@ -1810,7 +1751,6 @@ canvas {
 .Multi:hover,
 .Div:hover {
     color: var(--mo-hover-color);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     border-radius: 9px;
     background-color: (--ac-hover-color);
 }
@@ -1820,7 +1760,6 @@ canvas {
 .Multi:active,
 .Div:active {
     transform: scale(0.9);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .AC {
@@ -1839,15 +1778,13 @@ canvas {
 .AC:hover,
 .Del:hover {
     color: var(--ac-hover-color);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     border-radius: 9px;
-    background-color: (--ac-hover-color);
+    background-color: var(--ac-hover-color);
 }
 
 .AC:active,
 .Del:active {
     transform: scale(0.9);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 
@@ -1875,7 +1812,7 @@ canvas {
 .card {
     width: 250px;
     height: 250px;
-    background: rgba(20,20,20,0.4);
+    background: rgba(20, 20, 20, 0.4);
     color: white;
     display: flex;
     flex-direction: column;
@@ -1884,6 +1821,7 @@ canvas {
     padding: 20px;
     text-align: center;
 }
+
 .avatar {
     width: 100px;
     height: 100px;
@@ -1893,20 +1831,24 @@ canvas {
     background-position: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+
 .user-name {
     margin-top: 15px;
     font-size: 18px;
     font-weight: bold;
 }
+
 .user-info {
     margin-top: 2px;
     font-size: 12px;
     color: rgb(156, 156, 156);
 }
+
 .user-bio {
     margin-top: 2px;
     font-size: 14px;
 }
+
 .github-btn {
     margin-top: 15px;
     background-color: #2ea44f;
@@ -1920,7 +1862,6 @@ canvas {
 
 .github-btn:hover {
     background-color: #115e21;
-    transition: background-color 0.3s ease;
 }
 
 .iframe-window-content {
@@ -2113,12 +2054,10 @@ canvas {
 
 .icon:hover {
     background: rgba(110, 110, 110, 0.4);
-    transition: left 0.2s ease, top 0.2s ease, background 0.25s ease;
 }
 
 .icon.active {
     background: rgba(180, 180, 180, 0.3);
-    transition: left 0.2s ease, top 0.2s ease, background 0.25s ease;
 }
 
 .icon img {
@@ -2223,7 +2162,6 @@ canvas {
 
 .dropdown div:hover {
     background: rgba(80, 80, 80, 0.7);
-    transition: background 0.3s ease;
 }
 
 #editor {

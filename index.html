@@ -38,11 +38,8 @@
 
         <div id="loading_screen" class="screen hid">
             <p class="load_status_text" id="load_status"
-                style="user-select: none; font-size: 2.2rem; font-weight:bold;">Starting Up</p>
-            <span class="loading" style="user-select: none;">
-                <span class="edge edge-left"></span>
-                <span class="edge edge-right"></span>
-            </span>
+                style="user-select: none; font-size: 3rem; font-weight:bold;">Starting Up</p>
+            <span id="spinner2" class="spinner"></span>
         </div>
 
         <div id="booting-up_screen" class="screen hid">
@@ -52,14 +49,11 @@
                 <div class="logo-part_ini part13"></div>
                 <div class="logo-part_ini part14"></div>
             </div>
-            <span class="loading">
-                <span class="edge edge-left"></span>
-                <span class="edge edge-right"></span>
-            </span>
+            <span id="spinner1" class="spinner"></span>
             <div id="faulty-text">Preparing Automatic Repair</div>
 
             <footer id="footer-text">
-                <p class="made" style="font-size:0.5rem; user-select: none;">Made by RickByte</p>
+                <p class="made" style="font-size:0.75rem; user-select: none;">Made by RickByte</p>
             </footer>
         </div>
 
@@ -92,7 +86,7 @@
                     <span id="pass_fallback" style="font-size: 0.95rem">Provide a pin.</span>
                     <button id="wpass_close_btn">OK</button>
                 </div>
-                <div class="passhint" style="user-select: none;">Password Hint: First Four Natural Numbers</div>
+                <div class="passhint" style="user-select: none; font-size: 0.7rem;">Password Hint: First Four Natural Numbers</div>
                 <button id="shutbut2" style="user-select: none;" class="shutdown-button"></button>
             </div>
 
