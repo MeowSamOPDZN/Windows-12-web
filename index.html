@@ -389,14 +389,14 @@
                 </div>
             </div>
 
-            <div id="calculator-window" class="app-window hidden no-resize">
+            <div id="calculator-window" class="app-window hidden">
                 <div class="window-header">
                     <img src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/App%20Icons/Calculator.webp?raw=true"
                         alt="Calculator">
                     <span class="clo">Calculator</span>
                     <div class="window-controls">
                         <button class="minimize-btn">-</button>
-                        <button class="maximize-btn" style="display: none;">▢</button>
+                        <button class="maximize-btn">▢</button>
                         <button class="restore-btn" style="display: none;"> <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -410,7 +410,7 @@
                 <div class="window-content">
                     <div class="calculator-container" style="z-index: 0;">
                         <div class="calculator">
-                            <input type="text" id="display" disabled>
+                            <input type="text" id="display">
                             <div class="cbuttons">
                                 <button onclick="clearDisplay()" class="AC">AC</button>
                                 <button onclick="deleteLast()" class="Del">⌫</button>

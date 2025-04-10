@@ -1608,29 +1608,27 @@ canvas {
     --equal-hover-color: white;
     --mo-color: rgba(34, 37, 42, 0.5);
     --mo-hover-color: #0099e6;
-    --ac-bg: rgba(34, 37, 42, 0.5);
-    --ac-hover-color: #4a4a4a;
+    --ac-bg: rgba(94, 95, 96, 0.5);
+    --ac-hover-color: #383838;
 }
 
 .calculator {
     display: flex;
     flex-direction: column;
-    width: 99.5%;
-    height: 322px;
+    width: 100%;
+    height: 100%;
     padding: 0;
     background-color: transparent;
-    justify-content: top-left;
+    justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
-    left: 0.85px;
-    top: -0.85px;
 }
 
 #display {
-    width: 100%;
+    width: calc(100% - 10px);
     height: 24%;
-    font-size: 26px;
+    font-size: 2.2rem;
     font-weight: bold;
     text-align: right;
     padding: 1px;
@@ -1640,6 +1638,11 @@ canvas {
     border-radius: 7px;
     color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#display:focus,
+#display:active {
+  outline: none;
 }
 
 .cbuttons {
@@ -1655,7 +1658,7 @@ canvas {
     width: 100%;
     height: 100%;
     padding: 1px;
-    font-size: 20px;
+    font-size: 1.5rem;
     background-color: var(--button-bg);
     border: none;
     border-radius: 7px;
@@ -1748,7 +1751,7 @@ canvas {
 .Div:hover {
     color: var(--mo-hover-color);
     border-radius: 9px;
-    background-color: (--ac-hover-color);
+    background-color: var(--button-hover-bg);
 }
 
 .Add:active,
@@ -1759,7 +1762,7 @@ canvas {
 }
 
 .AC {
-    background-color: var(--ac-bg);
+    background-color: var(--mo-color);
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     width: 100%;
     height: 100%;
@@ -1773,9 +1776,9 @@ canvas {
 
 .AC:hover,
 .Del:hover {
-    color: var(--ac-hover-color);
+    color: var(--mo-hover-color);
     border-radius: 9px;
-    background-color: var(--ac-hover-color);
+    background-color: var(--button-hover-bg);
 }
 
 .AC:active,
@@ -1788,7 +1791,8 @@ canvas {
     position: relative;
     display: inline-block;
     transition: transform 0.5s ease;
-    z-index: 10
+    width: 100%;
+    height: 100%;
 }
 
 .eeDev {

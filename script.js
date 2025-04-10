@@ -1580,6 +1580,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const display = document.getElementById("display");
 
+    display.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            calculate();
+        }
+    });
+
+    input.addEventListener('blur', checkIfEmpty);
+
     function clearDisplay() {
         clickSound.play();
         clickSound.volume = 0.1;
@@ -2413,7 +2422,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 userStart.classList.remove("hid");
                 setTimeout(() => {
                     userStart.classList.add("visible");
-                   // fadeToScreen(desktopScreen, userStart);
+                    // fadeToScreen(desktopScreen, userStart);
                     setTimeout(() => {
                         hideLoadingScreen();
                         document.body.style.cursor = "default";
