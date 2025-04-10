@@ -1587,7 +1587,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    input.addEventListener('blur', checkIfEmpty);
+    display.addEventListener('blur', checkIfEmpty);
 
     function clearDisplay() {
         clickSound.play();
