@@ -529,14 +529,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function handleSwipeLeft() {
-        return;
-    }
-
-    function handleSwipeRight() {
-        return;
-    }
-
     document.addEventListener("keydown", (e) => {
         if (isOnLS === true) {
             handleSwipeUp();
@@ -560,10 +552,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             if (deltaX < -50) {
-                handleSwipeLeft();
+                handleSwipeUp();
                 isSwiping = false;
             } else if (deltaX > 50) {
-                handleSwipeRight();
+                handleSwipeUp();
                 isSwiping = false;
             }
         } else {
