@@ -82,6 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let delay;
 
+    self.addEventListener("install", (e) => {
+        console.log("Service Worker installed");
+    });
+
     function openGitHub() {
         window.open("https://github.com/immobilesmile70/", "_blank");
     }
