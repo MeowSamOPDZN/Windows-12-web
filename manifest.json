@@ -1,11 +1,11 @@
 {
-    "name": "Windows 12 Clone",
-    "short_name": "Windows 12",
+    "name": "Windows 12",
+    "short_name": "Windows",
     "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#000000", 
-    "theme_color": "#000000",      
-    "description": "",
+    "display": "fullscreen",
+    "background_color": "#111111", 
+    "theme_color": "#111111",      
+    "description": "This is a browser based clone of the windows with some new design choices.",
     "icons": [
       {
         "src": "https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/android-chrome-192x192.png",
