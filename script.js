@@ -710,6 +710,16 @@ document.addEventListener("DOMContentLoaded", () => {
             isDragging = false;
         });
 
+        slide.addEventListener("touchstart", () => {
+            isDragging = true;
+            initialValue = slide.value;
+            lastValue = slide.value;
+        });
+
+        slide.addEventListener("touchup", () => {
+            isDragging = false;
+        });
+
         slide.addEventListener("input", updateSliderM);
         updateSliderM.call(slide);
     });
@@ -1265,6 +1275,98 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 document.addEventListener("mouseup", () => {
+                    if (isResizing) {
+                        isResizing = false;
+                        setTimeout(() => { isResizing = false; resize = false; }, 30);
+                    }
+                    windowEl.classList.remove("dragging");
+                    let iframes = windowEl.querySelectorAll("iframe");
+                    iframes.forEach(iframe => iframe.style.pointerEvents = "auto");
+                    resizeCanvas();
+                });
+
+                resizer.addEventListener("touchstart", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    let touch = e.touches[0];
+                    prevX = touch.clientX;
+                    prevY = touch.clientY;
+                    prevWidth = windowEl.offsetWidth;
+                    prevHeight = windowEl.offsetHeight;
+                    prevLeft = windowEl.offsetLeft;
+                    prevTop = windowEl.offsetTop;
+
+                    resizeTimeout = setTimeout(() => {
+                        bringToFront();
+                        if (isMaximized) return;
+                        isResizing = true;
+                        resize = true;
+                        isTouchDragging = true;
+                        windowEl.classList.add("dragging");
+                
+                        let iframes = windowEl.querySelectorAll("iframe");
+                        iframes.forEach(iframe => iframe.style.pointerEvents = "none");
+                    }, 120);
+                });
+
+                document.addEventListener("touchmove", (e) => {
+                    if (!isResizing) {
+                        clearTimeout(resizeTimeout);
+                        return;
+                    }
+
+                    let touch = e.touches[0];
+                    let clientX = touch.clientX;
+                    let clientY = touch.clientY;
+
+                    let dx = clientX - prevX;
+                    let dy = clientY - prevY;
+                    let maxWidth = window.innerWidth;
+                    let maxHeight = window.innerHeight;
+                    let newWidth = prevWidth;
+                    let newHeight = prevHeight;
+                    let newLeft = prevLeft;
+                    let newTop = prevTop;
+                    const monitorRect = updateMonitorBounds();
+                    const minWidth = 200;
+                    const minHeight = 200;
+                    const maxWindowWidth = monitorRect.width;
+                    const maxWindowHeight = monitorRect.height;
+
+                    resizeCanvas();
+
+                    if (pos.includes("right")) {
+                        newWidth = Math.min(Math.max(minWidth, prevWidth + dx), Math.min(maxWidth - prevLeft, maxWindowWidth));
+                        windowEl.style.width = `${newWidth}px`;
+                    }
+
+                    if (pos.includes("left")) {
+                        newWidth = Math.min(Math.max(minWidth, prevWidth - dx), prevLeft + prevWidth);
+                        newLeft = Math.min(Math.max(0, prevLeft + dx), prevLeft + prevWidth - minWidth);
+                        if (newLeft + newWidth <= maxWidth) {
+                            windowEl.style.width = `${newWidth}px`;
+                            windowEl.style.left = `${newLeft}px`;
+                        }
+                    }
+
+                    if (pos.includes("bottom")) {
+                        newHeight = Math.min(Math.max(minHeight, prevHeight + dy), Math.min(maxHeight - prevTop, maxWindowHeight));
+                        windowEl.style.height = `${newHeight}px`;
+                    }
+
+                    if (pos.includes("top")) {
+                        newHeight = Math.min(Math.max(minHeight, prevHeight - dy), prevTop + prevHeight);
+                        newTop = Math.min(Math.max(0, prevTop + dy), prevTop + prevHeight - minHeight);
+                        if (newTop + newHeight <= maxHeight) {
+                            windowEl.style.height = `${newHeight}px`;
+                            windowEl.style.top = `${newTop}px`;
+                        }
+                    }
+                });
+
+                document.addEventListener("touchup", () => {
+                    clearTimeout(resizeTimeout);
                     if (isResizing) {
                         isResizing = false;
                         setTimeout(() => { isResizing = false; resize = false; }, 30);
