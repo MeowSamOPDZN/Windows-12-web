@@ -1281,13 +1281,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     makeWindowDraggable(clockWindow, 100, 175);
-    makeWindowDraggable(calculatorWindow, 200, 350);
-    makeWindowDraggable(paintWindow, 700, 450);
+    makeWindowDraggable(calculatorWindow, 200, 300);
+    makeWindowDraggable(paintWindow, 600, 400);
     makeWindowDraggable(eeWindow, 290, 316.6);
-    makeWindowDraggable(googleWindow, 700, 450);
-    makeWindowDraggable(winWindow, 700, 450);
-    makeWindowDraggable(notepadWindow, 700, 450);
-    makeWindowDraggable(cmdWindow, 500, 275);
+    makeWindowDraggable(googleWindow, 600, 400);
+    makeWindowDraggable(winWindow, 600, 400);
+    makeWindowDraggable(notepadWindow, 600, 400);
+    makeWindowDraggable(cmdWindow, 450, 225);
 
     clockAppBtn.addEventListener("click", () => {
         openWindow(clockWindow, 2);

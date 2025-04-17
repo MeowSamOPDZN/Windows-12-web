@@ -2254,6 +2254,8 @@ canvas {
 #faulty-text {
     color: white;
     display: none;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .quick-settings {
