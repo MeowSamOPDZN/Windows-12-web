@@ -1705,7 +1705,7 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (display.value === "69" && bsodScreen.classList.contains("not")) {
                 triggerBSOD();
             }
-            else if (/[^0-9\*\-\/\+]/.test(display.value)) {
+            else if (/[^0-9\*\-\/\+\.]/.test(display.value)) {
                 fadeOutDisplay();
                 display.value = "No alphabets allowed lil bro!";
                 lastOperationResult = null;
