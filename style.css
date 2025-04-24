@@ -412,6 +412,14 @@ input.pass:hover {
     transition: transform 0.3s ease, opacity 0.2s, margin 0.3s ease-in-out, width 0.3s ease, background-color 0.3s ease, border-top 0.2s ease;
 }
 
+.tile img:active {
+    transform: scale(0.85);
+}
+
+.tile img:hover {
+    transform: scale(1.05);
+}
+
 .tile:hover {
     background: rgba(150, 150, 150, 0.17);
 }
