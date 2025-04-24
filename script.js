@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startSound.volume = 0.1;
     logOffSound.volume = 1;
 
-    let delay;
+    let delay = 0; // Delay for the loading screen
 
     self.addEventListener("install", (e) => {
         console.log("Service Worker installed");
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.openGitHub = openGitHub;
 
     class Spinner {
-        constructor(element, codepoints, delay = 30, idleChar = 0xE100) {
+        constructor(element, codepoints, delay = 24, idleChar = 0xE100) {
             this.element = element;
             this.codepoints = codepoints;
             this.delay = delay;
@@ -172,10 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const rDelay = Math.floor(Math.random() * 1000) + 3000;
             delay = rDelay;
             setTimeout(() => {
-                toScreen.classList.add("visible");
                 setTimeout(() => {
                     hideLoadingScreen();
-                    setTimeout(stopSpinner2, 1000);
+                    setTimeout(() => { toScreen.classList.add("visible"); }, 800);
                 }, 1000);
             }, delay);
         }, 1500);
@@ -186,17 +185,17 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingScreen.classList.remove("hid");
         loadingScreen.classList.add("visible");
         document.body.style.cursor = "none";
-        spinner2.start();
+        startSpinner2();
     }
 
     function hideLoadingScreen() {
         loadingScreen.classList.add("hid");
         loadingScreen.classList.remove("visible");
-        document.body.style.cursor = "default";
         setTimeout(() => {
             loadingScreen.classList.add("removeDOM");
-            spinner2.stop();
-        }, 550);
+           stopSpinner2();
+           document.body.style.cursor = "default";
+        }, 1000);
     }
 
     userStart.classList.add("visible");
@@ -311,19 +310,19 @@ document.addEventListener("DOMContentLoaded", () => {
             startSound.volume = 0.5;
             setTimeout(() => {
                 startSound.play();
-            }, delay + 500);
-
-            winLogo.classList.remove("show");
-            setTimeout(() => winLogo.classList.add("show"), delay + 2500);
-
-            winClock.classList.remove("show");
-            setTimeout(() => winClock.classList.add("show"), delay + 2500);
-
-            winToast.classList.remove("show");
-            setTimeout(() => winToast.classList.add("show"), delay + 2500);
+            }, delay + 2000);
 
             taskbar.classList.remove("show");
-            setTimeout(() => taskbar.classList.add("show"), delay + 2500);
+            setTimeout(() => taskbar.classList.add("show"), delay + 3500);
+
+            winLogo.classList.remove("show");
+            setTimeout(() => winLogo.classList.add("show"), delay + 4000);
+
+            winToast.classList.remove("show");
+            setTimeout(() => winToast.classList.add("show"), delay + 4200);
+
+            winClock.classList.remove("show");
+            setTimeout(() => winClock.classList.add("show"), delay + 4400);
 
             handleSwipeUp();
             isOnLS = false;
@@ -840,8 +839,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (windowElement.classList.contains("minimized")) {
                 bounceUpAndReset(tile);
-            } else {
-                bounceAtPlace(tile);
             }
 
             openWindow(windowElement, index);
@@ -1304,7 +1301,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         resize = true;
                         isTouchDragging = true;
                         windowEl.classList.add("dragging");
-                
+
                         let iframes = windowEl.querySelectorAll("iframe");
                         iframes.forEach(iframe => iframe.style.pointerEvents = "none");
                     }, 120);
