@@ -840,6 +840,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (windowElement.classList.contains("minimized")) {
                 bounceUpAndReset(tile);
             }
+            else{
+                bounceAtPlace(tile);
+            }
 
             openWindow(windowElement, index);
         }
