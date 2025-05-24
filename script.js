@@ -765,7 +765,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 10);
         }
 
-        windowElement.classList.remove("hidden", "minimized");
+        windowElement.classList.remove("mini", "hidden", "minimized");
         windowElement.classList.add("open");
         bringToFront(windowElement);
 
@@ -841,7 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 bounceUpAndReset(tile);
             }
             else{
-                bounceAtPlace(tile);
+                bounceAtPlace(tile)
             }
 
             openWindow(windowElement, index);
@@ -1476,8 +1476,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const windowElement = e.target.closest(".app-window");
             if (!windowElement) return;
-
-            windowElement.classList.add('mini');
 
             let index = windowIds.indexOf(windowElement.id);
             let tile = document.getElementById(tileIds[index]);
