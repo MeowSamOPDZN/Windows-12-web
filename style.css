@@ -53,12 +53,13 @@ body {
 
 .inputflex {
     position: static;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 230px;
-    height: 60px;
+    width: 300px;
+    height: 80px;
+    display: flex;
 }
 
 .timeText {
@@ -68,7 +69,7 @@ body {
     flex-direction: column;
     font-weight: bold;
     color: white;
-    font-size: 4.5rem;
+    font-size: 5.5rem;
     top: 60px;
     transition: transform 0.4s ease-in-out, scale 0.4s ease-in-out;
     filter: blur(0px);
@@ -79,16 +80,16 @@ body {
     position: relative;
     font-weight: bold;
     color: white;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     top: 1px;
     text-shadow: 0 8px 15px rgba(0, 0, 0, 0.8);
 }
 
 #User_Icon {
     position: static;
-    margin-bottom: 10px;
-    width: 120px;
-    height: 120px;
+    margin-bottom: 15px;
+    width: 155px;
+    height: 155px;
     background: url(https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Default%20Profile%20Photo.webp?raw=true);
     background-size: cover;
     background-position: center;
@@ -97,8 +98,8 @@ body {
 }
 
 .pass {
-    width: 163px;
-    height: 30px;
+    width: 200px;
+    height: 40px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
@@ -108,8 +109,9 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
     margin: 0px;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     text-align: center;
+    flex-grow: 0.8;
 }
 
 input.pass {
@@ -133,22 +135,20 @@ input.pass:hover {
 .passhint {
     position: static;
     margin: 0px;
-    font-size: 10px;
     color: white;
-    font-weight: bold;
 }
 
 .username {
     position: static;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-size: 2rem;
     color: white;
     font-weight: bold;
 }
 
 .unlock {
-    width: 46px;
-    height: 46px;
+    width: 56px;
+    height: 56px;
     border-radius: 10px;
     flex-shrink: 0;
     font-weight: bold;
@@ -160,7 +160,9 @@ input.pass:hover {
     transition: background-color 0.2s ease-in-out;
     margin: 0px;
     padding: 8px;
-    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .unlock:hover {
@@ -896,18 +898,18 @@ input.pass:hover {
     position: absolute;
     bottom: 15px;
     right: 15px;
-    background: url(https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Taskbar/Shutdown.webp?raw=true) no-repeat;
+    background: url("https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Vector%20Icons/Taskbar/Shutdown.webp?raw=true") no-repeat;
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2);
     background-position-x: 50%;
     background-position-y: 50%;
-    background-size: 20px 20px;
+    background-size: 15px 15px;
     background-color: rgba(70, 70, 70, 0.3);
     border: 1px solid rgb(57 53 57 / 78%);
     padding: 10px;
     border-radius: 7px;
     font-size: 14px;
-    height: 30.5px;
-    width: 30.5px;
+    height: 30px;
+    width: 30px;
     -webkit-tap-highlight-color: transparent;
     transition: background-color 0.3s ease;
 }
@@ -941,7 +943,7 @@ input.pass:hover {
     top: 100px;
     left: 150px;
     background-color: rgba(50, 50, 50, 0.28);
-    backdrop-filter: blur(11px) contrast(1.2);
+    backdrop-filter: blur(20px) contrast(1.2);
     border: 0.02px solid rgba(60, 60, 60, 0.7);
     box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.5);
     z-index: 100;
@@ -2107,9 +2109,9 @@ canvas {
 
 #wpass_close_btn {
     color: white;
-    font-size: 0.7rem;
+    font-size: 1.25rem;
     background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
+    border-radius: 10px;
     padding: 7px;
     margin-top: 10px;
     padding-left: 23px;

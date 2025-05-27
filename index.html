@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Windows 12 Concept</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/favicon.ico"
+        type="image/x-icon" />
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json" />
 </head>
@@ -39,8 +40,8 @@
         </div>
 
         <div id="loading_screen" class="screen hid">
-            <p class="load_status_text" id="load_status"
-                style="user-select: none; font-size: 3rem; font-weight:bold;">Starting Up</p>
+            <p class="load_status_text" id="load_status" style="user-select: none; font-size: 3rem; font-weight:bold;">
+                Starting Up</p>
             <span id="spinner2" class="spinner"></span>
         </div>
 
@@ -84,14 +85,20 @@
                 <div id="input_flex" class="inputflex">
                     <input type="password" style="user-select: none;" inputmode="numeric" pattern="[0-9]*" maxlength="4"
                         required id="password" class="pass" placeholder="Enter Pin" />
-                    <button id="unlock_button" class="unlock" style="user-select: none;">▶</button>
+                    <button id="unlock_button" class="unlock" style="user-select: none;"><svg width="36px" height="36px"
+                            viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.795 11.272L7.795 16.272C6.79593 16.8964 5.5 16.1782 5.5 15L5.5 5.00002C5.5 3.82186 6.79593 3.1036 7.795 3.72802L15.795 8.72802C16.735 9.31552 16.735 10.6845 15.795 11.272Z"
+                                fill="#fff" />
+                        </svg></button>
                 </div>
                 <div id="wrong_pass" style="user-select: none;">
-                    <span id="pass_fallback" style="font-size: 0.95rem">Provide a pin.</span>
+                    <span id="pass_fallback" style="font-size: 1.5rem">Provide a pin.</span>
                     <button id="wpass_close_btn">OK</button>
                 </div>
-                <div class="passhint" style="user-select: none; font-size: 0.7rem;">Password Hint: First Four Natural Numbers</div>
-                <button id="shutbut2" style="user-select: none;" class="shutdown-button"></button>
+                <div class="passhint" style="user-select: none;">Password Hint: First Four Natural Numbers</div>
+                <button id="shutbut2" style="user-select: none;" class="shutdown-button"
+                    style="background-size: 30px 30px; border-radius: 10px; height: 60px; width: 60px;"></button>
             </div>
 
         </div>
@@ -209,7 +216,8 @@
                     <div class="slider-group">
                         <input type="range" class="sliderr" min="0" max="100" value="100" draggable="false"
                             id="brightness-slider">
-                        <svg id="sun-icon" style="position: absolute;left: calc(100% - 95px);top: calc(100% - 142px);pointer-events: none;"
+                        <svg id="sun-icon"
+                            style="position: absolute;left: calc(100% - 95px);top: calc(100% - 142px);pointer-events: none;"
                             width="22px" height="22px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -311,7 +319,7 @@
                 </div>
             </div>
 
-            <div id="clock-window" class="app-window hidden no-resize">
+            <div id="clock-window" class="app-window hidden no-resize" style="backdrop-filter:blur(15px) contrast(1.2);">
                 <div class="window-header">
                     <img src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/App%20Icons/Clock.webp?raw=true"
                         alt="Clock">
@@ -485,7 +493,7 @@
                 </div>
             </div>
 
-            <div id="ee-window" class="app-window hidden no-resize">
+            <div id="ee-window" class="app-window hidden no-resize" style="backdrop-filter:blur(15px) contrast(1.2);">
                 <div class="for-glow">
                     <div class="window-header">
                         <img src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/App%20Icons/Github.webp?raw=true"
@@ -507,7 +515,8 @@
 
                     <div class="ee-window-content">
                         <div class="card">
-                            <img src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Dev%20Photo.jpg" alt="Profile Photo" class="avatar">
+                            <img src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/Backgrounds/Dev%20Photo.jpg"
+                                alt="Profile Photo" class="avatar">
                             <div class="user-name">RickByte</div>
                             <div class="user-info">immobilesmile70 | he/him</div>
                             <div class="user-bio">Game Dev | Web Dev | UI/UX Enthusiast</div>
@@ -517,7 +526,7 @@
                 </div>
             </div>
 
-            <div id="notepad-window" class="app-window hidden">
+            <div id="notepad-window" class="app-window hidden" style="backdrop-filter:blur(15px) contrast(1.2);">
                 <div class="window-header" style="border: none; background: rgba(30, 30, 30, 0.5);">
                     <img src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/App%20Icons/Notepad.webp?raw=true"
                         alt="Notepad">
@@ -654,7 +663,7 @@
                             alt="Github" draggable="false"></div>
                     <div class="tile hidden hide" id="tile5"><img
                             src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/App%20Icons/Notepad.webp?raw=true"
-                            alt="Notepad" draggable="false"></div>  
+                            alt="Notepad" draggable="false"></div>
                     <div class="tile hidden hide" id="tile7"><img
                             src="https://raw.githubusercontent.com/immobilesmile70/Windows-12-web/main/assets/App%20Icons/CMD.webp?raw=true"
                             alt="CMD" draggable="false"></div>
